@@ -1301,9 +1301,9 @@
                 onkeydown="if(event.key==='Enter') entrar()"
         >
 
-        <button class="login-btn" onclick="entrar()">
-            ENTRAR NO SISTEMA
-        </button>
+        <button type="button" class="login-btn" id="btnEntrar">
+    ENTRAR NO SISTEMA
+</button>
 
         <div id="loginError" class="login-error"></div>
 
@@ -1327,7 +1327,7 @@
             <div class="brand">
 
                 <div class="brand-icon">
-                    <img src="../../../../../../Desktop/Sistema%20pedidos/logo.png" alt="Caverna do Dino" class="logo-img">
+                    <img src="./logo.png"
                 </div>
 
                 <div class="brand-text">
@@ -1388,7 +1388,7 @@
                 <div class="mobile-brand">
 
                     <div class="mobile-brand-icon">
-                        <img src="../../../../../../Desktop/Sistema%20pedidos/logo.png" alt="Caverna do Dino" class="logo-img">
+                        <img src="./logo.png"
                     </div>
 
                     <div>
@@ -2865,7 +2865,7 @@
 
         }
     );
-
+document.getElementById("btnEntrar").addEventListener("click", entrar);
 </script>
 
 </body>
