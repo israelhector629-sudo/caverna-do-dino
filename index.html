@@ -2004,87 +2004,139 @@
     }
 
 
-    function receberDadosFirebase(snapshot){
+    ```js
+function receberDadosFirebase(snapshot){
 
-        const dados = snapshot.val();
+    const dados = snapshot.val();
 
+    console.log("🔥 DADOS RECEBIDOS DO FIREBASE:", dados);
 
-        if(!dados){
+    // Banco vazio
+    if(!dados){
 
-            lista = [];
+        lista = [];
+        observacaoGeral = "";
 
-            observacaoGeral = "";
-
-            atualizarInterface();
-
-            return;
-
-        }
-
-
-        lista =
-            Array.isArray(dados.lista)
-            ? dados.lista
-            : [];
-
-
-        observacaoGeral =
-            dados.observacaoGeral || "";
-
-
-        document.getElementById(
-            "observacaoGeral"
-        ).value =
-            observacaoGeral;
-
+        document.getElementById("observacaoGeral").value = "";
 
         atualizarInterface();
 
+        return;
     }
+
+    /*
+       O Firebase pode devolver a lista como:
+       Array
+       ou
+       Objeto com chaves numéricas.
+
+       Por isso precisamos normalizar.
+    */
+
+    if(Array.isArray(dados.lista)){
+
+        lista = dados.lista;
+
+    }else if(
+        dados.lista &&
+        typeof dados.lista === "object"
+    ){
+
+        lista = Object.values(dados.lista);
+
+    }else{
+
+        lista = [];
+
+    }
+
+
+    // Recupera a observação geral
+    observacaoGeral =
+        dados.observacaoGeral || "";
+
+
+    document.getElementById(
+        "observacaoGeral"
+    ).value =
+        observacaoGeral;
+
+
+    console.log(
+        "📦 LISTA NORMALIZADA:",
+        lista
+    );
+
+
+    // Atualiza toda a tela
+    atualizarInterface();
+
+}
+```
 
 
     /* =========================================================
        SALVAR NO FIREBASE
     ========================================================= */
 
-    function salvarDados(){
+    ```js
+function salvarDados(){
 
-        if(!usuarioAtual) return;
-
-
-        const dados = {
-
-            lista: lista,
-
-            observacaoGeral:
-                document.getElementById(
-                    "observacaoGeral"
-                ).value.trim(),
-
-            ultimaAlteracaoPor:
-                usuarioAtual,
-
-            ultimaAlteracaoEm:
-                Date.now()
-
-        };
-
-
-        listaRef.set(dados)
-            .catch(function(error){
-
-                console.error(
-                    "Erro ao salvar:",
-                    error
-                );
-
-                mostrarToast(
-                    "Não foi possível salvar."
-                );
-
-            });
-
+    if(!usuarioAtual){
+        console.warn("Usuário não está conectado.");
+        return;
     }
+
+
+    const observacao =
+        document.getElementById(
+            "observacaoGeral"
+        ).value.trim();
+
+
+    const dados = {
+
+        lista: lista,
+
+        observacaoGeral: observacao,
+
+        ultimaAlteracaoPor: usuarioAtual,
+
+        ultimaAlteracaoEm: Date.now()
+
+    };
+
+
+    console.log(
+        "⬆️ ENVIANDO PARA FIREBASE:",
+        dados
+    );
+
+
+    listaRef
+        .set(dados)
+        .then(function(){
+
+            console.log(
+                "✅ LISTA SALVA NO FIREBASE"
+            );
+
+        })
+        .catch(function(error){
+
+            console.error(
+                "❌ ERRO AO SALVAR NO FIREBASE:",
+                error
+            );
+
+            mostrarToast(
+                "Erro ao salvar no Firebase."
+            );
+
+        });
+
+}
+```
 
 
     /* =========================================================
