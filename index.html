@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -46,10 +47,6 @@
             color:var(--text);
             overflow-x:hidden;
         }
-
-        /* =========================
-           LOGIN
-        ========================= */
 
         #loginScreen{
             position:fixed;
@@ -100,12 +97,12 @@
             align-items:center;
             justify-content:center;
             font-size:52px;
-            background:
-                linear-gradient(145deg,#14251c,#07100b);
+            background:linear-gradient(145deg,#14251c,#07100b);
             border:1px solid rgba(25,232,117,.2);
             box-shadow:
                 inset 0 0 30px rgba(25,232,117,.07),
                 0 0 35px rgba(25,232,117,.08);
+            overflow:hidden;
         }
 
         .login-box h1{
@@ -134,7 +131,6 @@
             color:white;
             outline:none;
             font-size:14px;
-            transition:.2s;
         }
 
         .login-input:focus{
@@ -168,10 +164,6 @@
             min-height:16px;
         }
 
-        /* =========================
-           APP
-        ========================= */
-
         #app{
             display:none;
             min-height:100vh;
@@ -182,10 +174,6 @@
             min-height:100vh;
         }
 
-        /* =========================
-           SIDEBAR
-        ========================= */
-
         .sidebar{
             width:275px;
             position:fixed;
@@ -194,8 +182,7 @@
             left:0;
             z-index:100;
             padding:24px 18px;
-            background:
-                linear-gradient(180deg,#0a0e0c,#070908);
+            background:linear-gradient(180deg,#0a0e0c,#070908);
             border-right:1px solid var(--border);
             display:flex;
             flex-direction:column;
@@ -218,6 +205,7 @@
             font-size:27px;
             background:linear-gradient(145deg,#13261c,#08100b);
             border:1px solid rgba(25,232,117,.18);
+            overflow:hidden;
         }
 
         .brand-text strong{
@@ -323,10 +311,6 @@
             font-weight:700;
         }
 
-        /* =========================
-           MAIN
-        ========================= */
-
         .main{
             margin-left:275px;
             width:calc(100% - 275px);
@@ -374,10 +358,6 @@
             border-color:rgba(25,232,117,.25);
             color:var(--green);
         }
-
-        /* =========================
-           DASHBOARD
-        ========================= */
 
         .stats{
             display:grid;
@@ -432,20 +412,12 @@
             opacity:.7;
         }
 
-        /* =========================
-           CONTENT GRID
-        ========================= */
-
         .content-grid{
             display:grid;
             grid-template-columns:minmax(0,1fr) 390px;
             gap:20px;
             align-items:start;
         }
-
-        /* =========================
-           PRODUCTS
-        ========================= */
 
         .panel{
             border:1px solid var(--border);
@@ -607,10 +579,6 @@
             font-size:17px;
             cursor:pointer;
         }
-
-        /* =========================
-           SHOPPING LIST
-        ========================= */
 
         .list-panel{
             position:sticky;
@@ -793,14 +761,6 @@
             cursor:pointer;
         }
 
-        .remove-btn:hover{
-            background:rgba(255,77,94,.1);
-        }
-
-        /* =========================
-           GENERAL OBSERVATION
-        ========================= */
-
         .general-area{
             padding:14px 20px 0;
         }
@@ -833,10 +793,6 @@
             border-color:rgba(25,232,117,.3);
         }
 
-        /* =========================
-           WHATSAPP
-        ========================= */
-
         .whatsapp-btn{
             width:calc(100% - 40px);
             margin:14px 20px 20px;
@@ -855,7 +811,6 @@
 
         .whatsapp-btn:hover{
             transform:translateY(-2px);
-            box-shadow:0 15px 35px rgba(25,232,117,.23);
         }
 
         .whatsapp-btn:disabled{
@@ -880,10 +835,6 @@
         .clear-btn:hover{
             color:#ff7783;
         }
-
-        /* =========================
-           MODAL
-        ========================= */
 
         .modal-overlay{
             display:none;
@@ -1042,10 +993,6 @@
             cursor:pointer;
         }
 
-        /* =========================
-           TOAST
-        ========================= */
-
         .toast{
             position:fixed;
             right:25px;
@@ -1070,12 +1017,15 @@
             transform:none;
         }
 
-        /* =========================
-           MOBILE
-        ========================= */
-
         .mobile-header{
             display:none;
+        }
+
+        .logo-img{
+            width:100%;
+            height:100%;
+            object-fit:contain;
+            display:block;
         }
 
         @media(max-width:1100px){
@@ -1090,10 +1040,6 @@
 
             .list-body{
                 max-height:none;
-            }
-
-            .products{
-                grid-template-columns:repeat(3,1fr);
             }
         }
 
@@ -1131,6 +1077,7 @@
                 border-radius:12px;
                 background:#101a14;
                 font-size:22px;
+                overflow:hidden;
             }
 
             .mobile-brand strong{
@@ -1229,10 +1176,6 @@
             }
         }
 
-        /* =========================
-           SCROLLBAR
-        ========================= */
-
         ::-webkit-scrollbar{
             width:7px;
             height:7px;
@@ -1246,37 +1189,19 @@
             background:#202923;
             border-radius:10px;
         }
-
-        ::-webkit-scrollbar-thumb:hover{
-            background:#2d3931;
-        }
-        .logo-img{
-            width:100%;
-            height:100%;
-            object-fit:contain;
-            display:block;
-        }
-
-        .brand-icon,
-        .mobile-brand-icon,
-        .dino-logo{
-            overflow:hidden;
-        }
     </style>
 </head>
 
 <body>
 
-<!-- =========================
-     LOGIN
-========================= -->
+<!-- LOGIN -->
 
 <div id="loginScreen">
 
     <div class="login-box">
 
         <div class="dino-logo">
-            <img src="./logo.png" alt="Caverna do Dino" class="logo-img login-logo">
+            <img src="./logo.png" alt="Caverna do Dino" class="logo-img">
         </div>
 
         <h1>Caverna <span>do Dino</span></h1>
@@ -1294,11 +1219,10 @@
         </select>
 
         <input
-                id="loginPassword"
-                class="login-input"
-                type="password"
-                placeholder="Senha"
-                onkeydown="if(event.key==='Enter') entrar()"
+            id="loginPassword"
+            class="login-input"
+            type="password"
+            placeholder="Senha"
         >
 
         <button class="login-btn" onclick="entrar()">
@@ -1312,22 +1236,18 @@
 </div>
 
 
-<!-- =========================
-     APP
-========================= -->
+<!-- APP -->
 
 <div id="app">
 
     <div class="layout">
-
-        <!-- SIDEBAR -->
 
         <aside class="sidebar">
 
             <div class="brand">
 
                 <div class="brand-icon">
-                    <img src="../../../../../../Desktop/Sistema%20pedidos/logo.png" alt="Caverna do Dino" class="logo-img">
+                    <img src="./logo.png" alt="Caverna do Dino" class="logo-img">
                 </div>
 
                 <div class="brand-text">
@@ -1377,18 +1297,14 @@
         </aside>
 
 
-        <!-- MAIN -->
-
         <main class="main">
-
-            <!-- MOBILE HEADER -->
 
             <div class="mobile-header">
 
                 <div class="mobile-brand">
 
                     <div class="mobile-brand-icon">
-                        <img src="../../../../../../Desktop/Sistema%20pedidos/logo.png" alt="Caverna do Dino" class="logo-img">
+                        <img src="./logo.png" alt="Caverna do Dino" class="logo-img">
                     </div>
 
                     <div>
@@ -1405,8 +1321,6 @@
             </div>
 
 
-            <!-- TOPBAR -->
-
             <div class="topbar">
 
                 <div class="page-title">
@@ -1421,7 +1335,11 @@
 
                 <div class="header-actions">
 
-                    <button class="icon-btn" onclick="limparLista()" title="Limpar lista">
+                    <button
+                        class="icon-btn"
+                        onclick="limparLista()"
+                        title="Limpar lista"
+                    >
                         🗑
                     </button>
 
@@ -1429,8 +1347,6 @@
 
             </div>
 
-
-            <!-- STATS -->
 
             <div class="stats">
 
@@ -1485,12 +1401,8 @@
             </div>
 
 
-            <!-- CONTENT -->
-
             <div class="content-grid">
 
-
-                <!-- PRODUCTS -->
 
                 <section class="panel" id="productsPanel">
 
@@ -1517,10 +1429,10 @@
                             <span>🔎</span>
 
                             <input
-                                    id="searchInput"
-                                    type="text"
-                                    placeholder="Pesquisar produto..."
-                                    oninput="renderProdutos()"
+                                id="searchInput"
+                                type="text"
+                                placeholder="Pesquisar produto..."
+                                oninput="renderProdutos()"
                             >
 
                         </div>
@@ -1535,8 +1447,6 @@
                 </section>
 
 
-                <!-- SHOPPING LIST -->
-
                 <section class="panel list-panel">
 
                     <div class="list-header">
@@ -1550,7 +1460,7 @@
                                 </div>
 
                                 <div class="panel-subtitle">
-                                    Separada por setor
+                                    Lista compartilhada em tempo real
                                 </div>
 
                             </div>
@@ -1592,27 +1502,26 @@
                         </label>
 
                         <textarea
-                                id="observacaoGeral"
-                                placeholder="Ex.: Comprar somente se não tiver no estoque..."
-                                oninput="salvarDados()"
+                            id="observacaoGeral"
+                            placeholder="Ex.: Comprar somente se não tiver no estoque..."
                         ></textarea>
 
                     </div>
 
 
                     <button
-                            id="whatsappBtn"
-                            class="whatsapp-btn"
-                            onclick="enviarWhatsApp()"
-                            disabled
+                        id="whatsappBtn"
+                        class="whatsapp-btn"
+                        onclick="enviarWhatsApp()"
+                        disabled
                     >
                         💬 ENVIAR LISTA PELO WHATSAPP
                     </button>
 
 
                     <button
-                            class="clear-btn"
-                            onclick="limparLista()"
+                        class="clear-btn"
+                        onclick="limparLista()"
                     >
                         Limpar lista atual
                     </button>
@@ -1628,9 +1537,7 @@
 </div>
 
 
-<!-- =========================
-     MODAL
-========================= -->
+<!-- MODAL -->
 
 <div class="modal-overlay" id="modalOverlay">
 
@@ -1712,10 +1619,10 @@
                 </button>
 
                 <input
-                        id="modalQuantidade"
-                        type="number"
-                        min="1"
-                        value="1"
+                    id="modalQuantidade"
+                    type="number"
+                    min="1"
+                    value="1"
                 >
 
                 <button onclick="alterarModalQuantidade(1)">
@@ -1734,18 +1641,18 @@
             </label>
 
             <textarea
-                    id="modalObservacao"
-                    class="form-control"
-                    rows="3"
-                    placeholder="Ex.: Tem 5 em estoque"
+                id="modalObservacao"
+                class="form-control"
+                rows="3"
+                placeholder="Ex.: Tem 5 em estoque"
             ></textarea>
 
         </div>
 
 
         <button
-                class="modal-add"
-                onclick="confirmarAdicao()"
+            class="modal-add"
+            onclick="confirmarAdicao()"
         >
             ✓ ADICIONAR À LISTA
         </button>
@@ -1760,7 +1667,53 @@
 <div class="toast" id="toast"></div>
 
 
+<!-- =========================================================
+     FIREBASE
+========================================================= -->
+
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.5/firebase-database-compat.js"></script>
+
+
 <script>
+
+    /* =========================================================
+       FIREBASE CONFIG
+    ========================================================= */
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyBq0DDzFsgGbO5TZ7DjJDcaSIGI67YNvT0",
+        authDomain: "caverna-do-dino-56736.firebaseapp.com",
+        databaseURL: "https://caverna-do-dino-56736-default-rtdb.firebaseio.com",
+        projectId: "caverna-do-dino-56736",
+        storageBucket: "caverna-do-dino-56736.firebasestorage.app",
+        messagingSenderId: "1036175928308",
+        appId: "1:1036175928308:web:19b2dbac17815473ff67a1",
+        measurementId: "G-9WFXWFV0KG"
+    };
+
+
+    firebase.initializeApp(firebaseConfig);
+
+    const database = firebase.database();
+
+
+    /*
+       TODOS OS CELULARES USARÃO ESTE MESMO CAMINHO.
+
+       Portanto:
+
+       Celular 1
+             ↓
+       /listaCompras
+             ↑
+       Celular 2
+
+       Todos enxergam a mesma lista.
+    */
+
+    const listaRef = database.ref("listaCompras");
+
 
     /* =========================================================
        CONFIGURAÇÕES
@@ -1807,38 +1760,32 @@
 
     const produtos = [
 
-        // CARNES
         {nome:"Carne bovina",categoria:"Carnes",emoji:"🥩"},
         {nome:"Frango",categoria:"Carnes",emoji:"🍗"},
         {nome:"Calabresa",categoria:"Carnes",emoji:"🌭"},
         {nome:"Bacon",categoria:"Carnes",emoji:"🥓"},
         {nome:"Linguiça",categoria:"Carnes",emoji:"🌭"},
 
-        // BEBIDAS
         {nome:"Coca-Cola",categoria:"Bebidas",emoji:"🥤"},
         {nome:"Guaraná",categoria:"Bebidas",emoji:"🥤"},
         {nome:"Água",categoria:"Bebidas",emoji:"💧"},
         {nome:"Suco",categoria:"Bebidas",emoji:"🧃"},
 
-        // MASSAS
         {nome:"Massa de pizza",categoria:"Massas",emoji:"🍕"},
         {nome:"Macarrão",categoria:"Massas",emoji:"🍝"},
         {nome:"Farinha de trigo",categoria:"Massas",emoji:"🌾"},
         {nome:"Farinha de rosca",categoria:"Massas",emoji:"🥖"},
 
-        // HORTIFRUTI
         {nome:"Tomate",categoria:"Hortifruti",emoji:"🍅"},
         {nome:"Cebola",categoria:"Hortifruti",emoji:"🧅"},
         {nome:"Alface",categoria:"Hortifruti",emoji:"🥬"},
         {nome:"Pimentão",categoria:"Hortifruti",emoji:"🫑"},
         {nome:"Alho",categoria:"Hortifruti",emoji:"🧄"},
 
-        // LATICÍNIOS
         {nome:"Queijo mussarela",categoria:"Laticínios",emoji:"🧀"},
         {nome:"Catupiry",categoria:"Laticínios",emoji:"🧀"},
         {nome:"Requeijão",categoria:"Laticínios",emoji:"🥛"},
 
-        // MERCEARIA
         {nome:"Molho de tomate",categoria:"Mercearia",emoji:"🍅"},
         {nome:"Óleo",categoria:"Mercearia",emoji:"🫗"},
         {nome:"Azeite",categoria:"Mercearia",emoji:"🫒"},
@@ -1847,7 +1794,6 @@
         {nome:"Orégano",categoria:"Mercearia",emoji:"🌿"},
         {nome:"Ovos",categoria:"Mercearia",emoji:"🥚"},
 
-        // LIMPEZA
         {nome:"Detergente",categoria:"Limpeza",emoji:"🧴"},
         {nome:"Desinfetante",categoria:"Limpeza",emoji:"🧹"},
         {nome:"Papel toalha",categoria:"Limpeza",emoji:"🧻"},
@@ -1865,6 +1811,9 @@
     let lista = [];
     let categoriaAtual = "Todos";
     let produtoSelecionado = null;
+    let observacaoGeral = "";
+
+    let firebaseListenerAtivo = false;
 
 
     /* =========================================================
@@ -1873,42 +1822,75 @@
 
     function entrar(){
 
-        const usuario = document.getElementById("loginUser").value;
-        const senha = document.getElementById("loginPassword").value;
-        const erro = document.getElementById("loginError");
+        const usuario =
+            document.getElementById("loginUser").value;
+
+        const senha =
+            document.getElementById("loginPassword").value;
+
+        const erro =
+            document.getElementById("loginError");
+
 
         if(!usuario){
 
-            erro.textContent = "Selecione seu nome.";
+            erro.textContent =
+                "Selecione seu nome.";
 
             return;
         }
+
 
         if(funcionarios[usuario] !== senha){
 
-            erro.textContent = "Senha incorreta.";
+            erro.textContent =
+                "Senha incorreta.";
 
             return;
         }
 
+
         usuarioAtual = usuario;
+
+
+        /*
+           Salvamos SOMENTE o usuário no celular.
+
+           A lista NÃO é salva no localStorage.
+           A lista fica no Firebase.
+        */
 
         localStorage.setItem(
             "caverna_dino_usuario",
             usuarioAtual
         );
 
-        document.getElementById("loginScreen").style.display = "none";
-        document.getElementById("app").style.display = "block";
 
-        document.getElementById("sidebarUser").textContent = usuarioAtual;
+        document.getElementById(
+            "loginScreen"
+        ).style.display = "none";
 
-        carregarDados();
+
+        document.getElementById(
+            "app"
+        ).style.display = "block";
+
+
+        document.getElementById(
+            "sidebarUser"
+        ).textContent =
+            usuarioAtual;
+
+
         renderCategorias();
         renderProdutos();
         renderLista();
 
-        mostrarToast("Bem-vindo, " + usuarioAtual + "!");
+        iniciarFirebase();
+
+        mostrarToast(
+            "Bem-vindo, " + usuarioAtual + "!"
+        );
 
     }
 
@@ -1917,98 +1899,235 @@
 
         if(lista.length > 0){
 
-            const confirmar = confirm(
-                "Você tem itens na lista. Deseja realmente sair?"
-            );
+            const confirmar =
+                confirm(
+                    "Você tem itens na lista. Deseja realmente sair?"
+                );
 
             if(!confirmar) return;
 
         }
 
+
+        pararFirebase();
+
+
         usuarioAtual = "";
 
         lista = [];
+
+        observacaoGeral = "";
+
 
         localStorage.removeItem(
             "caverna_dino_usuario"
         );
 
-        document.getElementById("app").style.display = "none";
 
-        document.getElementById("loginScreen").style.display = "flex";
+        document.getElementById(
+            "app"
+        ).style.display = "none";
 
-        document.getElementById("loginUser").value = "";
 
-        document.getElementById("loginPassword").value = "";
+        document.getElementById(
+            "loginScreen"
+        ).style.display = "flex";
 
-        document.getElementById("loginError").textContent = "";
+
+        document.getElementById(
+            "loginUser"
+        ).value = "";
+
+
+        document.getElementById(
+            "loginPassword"
+        ).value = "";
+
+
+        document.getElementById(
+            "loginError"
+        ).textContent = "";
 
     }
 
 
     /* =========================================================
-       STORAGE
+       FIREBASE - TEMPO REAL
     ========================================================= */
 
-    function chaveDados(){
+    function iniciarFirebase(){
 
-        return "caverna_dino_lista_" + usuarioAtual;
+        if(firebaseListenerAtivo) return;
+
+        firebaseListenerAtivo = true;
+
+
+        /*
+           onValue fica escutando o banco.
+
+           Se qualquer celular alterar a lista,
+           esta função será executada automaticamente
+           em todos os outros celulares.
+        */
+
+        listaRef.on(
+            "value",
+            receberDadosFirebase,
+            function(error){
+
+                console.error(
+                    "Erro Firebase:",
+                    error
+                );
+
+                mostrarToast(
+                    "Erro ao conectar ao banco."
+                );
+
+            }
+        );
 
     }
 
+
+    function pararFirebase(){
+
+        if(!firebaseListenerAtivo) return;
+
+        listaRef.off(
+            "value",
+            receberDadosFirebase
+        );
+
+        firebaseListenerAtivo = false;
+
+    }
+
+
+    function receberDadosFirebase(snapshot){
+
+        const dados = snapshot.val();
+
+
+        if(!dados){
+
+            lista = [];
+
+            observacaoGeral = "";
+
+            atualizarInterface();
+
+            return;
+
+        }
+
+
+        lista =
+            Array.isArray(dados.lista)
+            ? dados.lista
+            : [];
+
+
+        observacaoGeral =
+            dados.observacaoGeral || "";
+
+
+        document.getElementById(
+            "observacaoGeral"
+        ).value =
+            observacaoGeral;
+
+
+        atualizarInterface();
+
+    }
+
+
+    /* =========================================================
+       SALVAR NO FIREBASE
+    ========================================================= */
 
     function salvarDados(){
 
+        if(!usuarioAtual) return;
+
+
         const dados = {
 
-            lista:lista,
+            lista: lista,
 
             observacaoGeral:
-                document.getElementById("observacaoGeral").value
+                document.getElementById(
+                    "observacaoGeral"
+                ).value.trim(),
+
+            ultimaAlteracaoPor:
+                usuarioAtual,
+
+            ultimaAlteracaoEm:
+                Date.now()
 
         };
 
-        localStorage.setItem(
-            chaveDados(),
-            JSON.stringify(dados)
-        );
+
+        listaRef.set(dados)
+            .catch(function(error){
+
+                console.error(
+                    "Erro ao salvar:",
+                    error
+                );
+
+                mostrarToast(
+                    "Não foi possível salvar."
+                );
+
+            });
 
     }
 
 
-    function carregarDados(){
+    /* =========================================================
+       OBSERVAÇÃO GERAL
+    ========================================================= */
 
-        const salvo = localStorage.getItem(
-            chaveDados()
+    document
+        .getElementById("observacaoGeral")
+        .addEventListener(
+            "input",
+            function(){
+
+                observacaoGeral =
+                    this.value;
+
+                /*
+                   Pequeno atraso evita mandar uma
+                   requisição ao Firebase a cada tecla.
+                */
+
+                clearTimeout(
+                    window.observacaoTimer
+                );
+
+                window.observacaoTimer =
+                    setTimeout(
+                        salvarDados,
+                        500
+                    );
+
+            }
         );
 
-        if(!salvo){
 
-            lista = [];
+    /* =========================================================
+       ATUALIZAR INTERFACE
+    ========================================================= */
 
-            document.getElementById(
-                "observacaoGeral"
-            ).value = "";
+    function atualizarInterface(){
 
-            return;
-        }
+        renderLista();
 
-        try{
-
-            const dados = JSON.parse(salvo);
-
-            lista = dados.lista || [];
-
-            document.getElementById(
-                "observacaoGeral"
-            ).value =
-                dados.observacaoGeral || "";
-
-        }catch(e){
-
-            lista = [];
-
-        }
+        atualizarEstatisticas();
 
     }
 
@@ -2020,38 +2139,63 @@
     function renderCategorias(){
 
         const container =
-            document.getElementById("categories");
+            document.getElementById(
+                "categories"
+            );
+
 
         const categorias = [
             "Todos",
-            ...new Set(produtos.map(p => p.categoria))
+            ...new Set(
+                produtos.map(
+                    p => p.categoria
+                )
+            )
         ];
+
 
         container.innerHTML = "";
 
-        categorias.forEach(categoria => {
 
-            const button =
-                document.createElement("button");
+        categorias.forEach(
+            categoria => {
 
-            button.className =
-                "category-btn " +
-                (categoriaAtual === categoria ? "active" : "");
+                const button =
+                    document.createElement(
+                        "button"
+                    );
 
-            button.textContent = categoria;
 
-            button.onclick = () => {
+                button.className =
+                    "category-btn " +
+                    (
+                        categoriaAtual === categoria
+                        ? "active"
+                        : ""
+                    );
 
-                categoriaAtual = categoria;
 
-                renderCategorias();
-                renderProdutos();
+                button.textContent =
+                    categoria;
 
-            };
 
-            container.appendChild(button);
+                button.onclick = () => {
 
-        });
+                    categoriaAtual =
+                        categoria;
+
+                    renderCategorias();
+                    renderProdutos();
+
+                };
+
+
+                container.appendChild(
+                    button
+                );
+
+            }
+        );
 
     }
 
@@ -2063,34 +2207,52 @@
     function renderProdutos(){
 
         const container =
-            document.getElementById("products");
+            document.getElementById(
+                "products"
+            );
+
 
         const pesquisa =
-            document.getElementById("searchInput")
+            document.getElementById(
+                "searchInput"
+            )
             .value
             .toLowerCase()
             .trim();
 
-        let filtrados = produtos.filter(produto => {
 
-            const categoriaOk =
-                categoriaAtual === "Todos" ||
-                produto.categoria === categoriaAtual;
+        const filtrados =
+            produtos.filter(
+                produto => {
 
-            const pesquisaOk =
-                produto.nome
-                    .toLowerCase()
-                    .includes(pesquisa);
+                    const categoriaOk =
+                        categoriaAtual === "Todos" ||
+                        produto.categoria ===
+                            categoriaAtual;
 
-            return categoriaOk && pesquisaOk;
 
-        });
+                    const pesquisaOk =
+                        produto.nome
+                            .toLowerCase()
+                            .includes(
+                                pesquisa
+                            );
+
+
+                    return categoriaOk &&
+                           pesquisaOk;
+
+                }
+            );
+
 
         container.innerHTML = "";
+
 
         if(filtrados.length === 0){
 
             container.innerHTML = `
+
                 <div style="
                     grid-column:1/-1;
                     text-align:center;
@@ -2100,43 +2262,58 @@
                 ">
                     Nenhum produto encontrado.
                 </div>
+
             `;
 
             return;
+
         }
 
-        filtrados.forEach(produto => {
 
-            const div =
-                document.createElement("div");
+        filtrados.forEach(
+            produto => {
 
-            div.className = "product";
+                const div =
+                    document.createElement(
+                        "div"
+                    );
 
-            div.innerHTML = `
 
-                <div class="product-icon">
-                    ${produto.emoji}
-                </div>
+                div.className =
+                    "product";
 
-                <div class="product-name">
-                    ${produto.nome}
-                </div>
 
-                <div class="product-category">
-                    ${produto.categoria}
-                </div>
+                div.innerHTML = `
 
-                <button class="add-product">
-                    +
-                </button>
+                    <div class="product-icon">
+                        ${produto.emoji}
+                    </div>
 
-            `;
+                    <div class="product-name">
+                        ${escapeHTML(produto.nome)}
+                    </div>
 
-            div.onclick = () => abrirModal(produto);
+                    <div class="product-category">
+                        ${escapeHTML(produto.categoria)}
+                    </div>
 
-            container.appendChild(div);
+                    <button class="add-product">
+                        +
+                    </button>
 
-        });
+                `;
+
+
+                div.onclick = () =>
+                    abrirModal(produto);
+
+
+                container.appendChild(
+                    div
+                );
+
+            }
+        );
 
     }
 
@@ -2147,35 +2324,47 @@
 
     function abrirModal(produto){
 
-        produtoSelecionado = produto;
+        produtoSelecionado =
+            produto;
+
 
         document.getElementById(
             "modalEmoji"
-        ).textContent = produto.emoji;
+        ).textContent =
+            produto.emoji;
+
 
         document.getElementById(
             "modalProductName"
-        ).textContent = produto.nome;
+        ).textContent =
+            produto.nome;
+
 
         document.getElementById(
             "modalProductCategory"
-        ).textContent = produto.categoria;
+        ).textContent =
+            produto.categoria;
+
 
         document.getElementById(
             "modalQuantidade"
         ).value = 1;
 
+
         document.getElementById(
             "modalObservacao"
         ).value = "";
+
 
         document.getElementById(
             "modalSetor"
         ).value = "Pizza";
 
+
         document.getElementById(
             "modalOverlay"
-        ).style.display = "flex";
+        ).style.display =
+            "flex";
 
     }
 
@@ -2184,9 +2373,12 @@
 
         document.getElementById(
             "modalOverlay"
-        ).style.display = "none";
+        ).style.display =
+            "none";
 
-        produtoSelecionado = null;
+
+        produtoSelecionado =
+            null;
 
     }
 
@@ -2198,15 +2390,22 @@
                 "modalQuantidade"
             );
 
+
         let quantidade =
-            parseInt(input.value) || 1;
+            parseInt(
+                input.value
+            ) || 1;
+
 
         quantidade += valor;
+
 
         if(quantidade < 1)
             quantidade = 1;
 
-        input.value = quantidade;
+
+        input.value =
+            quantidade;
 
     }
 
@@ -2217,12 +2416,15 @@
 
     function confirmarAdicao(){
 
-        if(!produtoSelecionado) return;
+        if(!produtoSelecionado)
+            return;
+
 
         const setor =
             document.getElementById(
                 "modalSetor"
             ).value;
+
 
         const quantidade =
             parseInt(
@@ -2231,50 +2433,67 @@
                 ).value
             ) || 1;
 
+
         const observacao =
             document.getElementById(
                 "modalObservacao"
-            ).value.trim();
+            ).value
+            .trim();
+
 
         /*
-            Mesmo produto pode existir
-            em setores diferentes.
+           Procuramos produto + setor + observação.
+
+           Assim o mesmo produto pode aparecer
+           em setores diferentes.
         */
 
         const existente =
-            lista.find(item =>
-
-                item.nome === produtoSelecionado.nome &&
-                item.setor === setor &&
-                item.observacaoItem === observacao
-
+            lista.find(
+                item =>
+                    item.nome ===
+                        produtoSelecionado.nome &&
+                    item.setor === setor &&
+                    item.observacaoItem ===
+                        observacao
             );
+
 
         if(existente){
 
-            existente.quantidade += quantidade;
+            existente.quantidade +=
+                quantidade;
 
         }else{
 
             lista.push({
 
-                id:Date.now() + Math.random(),
+                id:
+                    Date.now() +
+                    Math.random(),
 
-                nome:produtoSelecionado.nome,
+                nome:
+                    produtoSelecionado.nome,
 
-                categoria:produtoSelecionado.categoria,
+                categoria:
+                    produtoSelecionado.categoria,
 
-                emoji:produtoSelecionado.emoji,
+                emoji:
+                    produtoSelecionado.emoji,
 
-                setor:setor,
+                setor:
+                    setor,
 
-                quantidade:quantidade,
+                quantidade:
+                    quantidade,
 
-                observacaoItem:observacao
+                observacaoItem:
+                    observacao
 
             });
 
         }
+
 
         salvarDados();
 
@@ -2282,10 +2501,9 @@
 
         fecharModal();
 
+
         mostrarToast(
-            produtoSelecionado
-                ? "Produto adicionado à lista!"
-                : "Produto adicionado!"
+            "Produto adicionado à lista!"
         );
 
     }
@@ -2298,7 +2516,10 @@
     function renderLista(){
 
         const container =
-            document.getElementById("listBody");
+            document.getElementById(
+                "listBody"
+            );
+
 
         if(lista.length === 0){
 
@@ -2322,13 +2543,16 @@
 
             `;
 
+
             atualizarEstatisticas();
 
             return;
 
         }
 
+
         container.innerHTML = "";
+
 
         const ordemSetores = [
             "Pizza",
@@ -2337,120 +2561,151 @@
             "Bar"
         ];
 
-        ordemSetores.forEach(setor => {
 
-            const itens =
-                lista.filter(
-                    item => item.setor === setor
-                );
+        ordemSetores.forEach(
+            setor => {
 
-            if(itens.length === 0) return;
+                const itens =
+                    lista.filter(
+                        item =>
+                            item.setor === setor
+                    );
 
-            const bloco =
-                document.createElement("div");
 
-            bloco.className = "sector-block";
+                if(itens.length === 0)
+                    return;
 
-            const totalQuantidade =
-                itens.reduce(
-                    (total,item) =>
-                        total + item.quantidade,
-                    0
-                );
 
-            bloco.innerHTML = `
+                const bloco =
+                    document.createElement(
+                        "div"
+                    );
 
-                <div class="sector-title">
 
-                    <div class="sector-name">
-                        ${setores[setor].emoji}
-                        ${setor}
-                    </div>
+                bloco.className =
+                    "sector-block";
 
-                    <div class="sector-total">
-                        ${totalQuantidade} unidade(s)
-                    </div>
 
-                </div>
+                const totalQuantidade =
+                    itens.reduce(
+                        (total,item) =>
+                            total +
+                            Number(
+                                item.quantidade
+                            ),
+                        0
+                    );
 
-            `;
 
-            itens.forEach(item => {
+                bloco.innerHTML = `
 
-                const div =
-                    document.createElement("div");
+                    <div class="sector-title">
 
-                div.className = "list-item";
-
-                div.innerHTML = `
-
-                    <div class="item-top">
-
-                        <div class="item-info">
-
-                            <div class="item-name">
-                                ${item.emoji}
-                                ${item.nome}
-                            </div>
-
-                            <div class="item-category">
-                                ${item.categoria}
-                            </div>
-
+                        <div class="sector-name">
+                            ${setores[setor].emoji}
+                            ${setor}
                         </div>
 
-                    </div>
-
-                    ${
-                        item.observacaoItem
-                        ?
-                        `
-                        <div class="item-observation">
-                            ${escapeHTML(item.observacaoItem)}
+                        <div class="sector-total">
+                            ${totalQuantidade} unidade(s)
                         </div>
-                        `
-                        :
-                        ""
-                    }
-
-                    <div class="item-controls">
-
-                        <button
-                            class="qty-btn"
-                            onclick="alterarQuantidade('${item.id}',-1)"
-                        >
-                            −
-                        </button>
-
-                        <div class="qty-number">
-                            ${item.quantidade}
-                        </div>
-
-                        <button
-                            class="qty-btn"
-                            onclick="alterarQuantidade('${item.id}',1)"
-                        >
-                            +
-                        </button>
-
-                        <button
-                            class="remove-btn"
-                            onclick="removerItem('${item.id}')"
-                        >
-                            ✕
-                        </button>
 
                     </div>
 
                 `;
 
-                bloco.appendChild(div);
 
-            });
+                itens.forEach(
+                    item => {
 
-            container.appendChild(bloco);
+                        const div =
+                            document.createElement(
+                                "div"
+                            );
 
-        });
+
+                        div.className =
+                            "list-item";
+
+
+                        div.innerHTML = `
+
+                            <div class="item-top">
+
+                                <div class="item-info">
+
+                                    <div class="item-name">
+                                        ${item.emoji}
+                                        ${escapeHTML(item.nome)}
+                                    </div>
+
+                                    <div class="item-category">
+                                        ${escapeHTML(item.categoria)}
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            ${
+                                item.observacaoItem
+                                ?
+                                `
+                                <div class="item-observation">
+                                    ${escapeHTML(item.observacaoItem)}
+                                </div>
+                                `
+                                :
+                                ""
+                            }
+
+                            <div class="item-controls">
+
+                                <button
+                                    class="qty-btn"
+                                    onclick="alterarQuantidade('${item.id}',-1)"
+                                >
+                                    −
+                                </button>
+
+                                <div class="qty-number">
+                                    ${item.quantidade}
+                                </div>
+
+                                <button
+                                    class="qty-btn"
+                                    onclick="alterarQuantidade('${item.id}',1)"
+                                >
+                                    +
+                                </button>
+
+                                <button
+                                    class="remove-btn"
+                                    onclick="removerItem('${item.id}')"
+                                >
+                                    ✕
+                                </button>
+
+                            </div>
+
+                        `;
+
+
+                        bloco.appendChild(
+                            div
+                        );
+
+                    }
+                );
+
+
+                container.appendChild(
+                    bloco
+                );
+
+            }
+        );
+
 
         atualizarEstatisticas();
 
@@ -2465,22 +2720,32 @@
 
         const item =
             lista.find(
-                item => String(item.id) === String(id)
+                item =>
+                    String(item.id) ===
+                    String(id)
             );
 
-        if(!item) return;
 
-        item.quantidade += valor;
+        if(!item)
+            return;
+
+
+        item.quantidade =
+            Number(item.quantidade) +
+            valor;
+
 
         if(item.quantidade <= 0){
 
             lista =
                 lista.filter(
                     item =>
-                        String(item.id) !== String(id)
+                        String(item.id) !==
+                        String(id)
                 );
 
         }
+
 
         salvarDados();
 
@@ -2498,14 +2763,19 @@
         lista =
             lista.filter(
                 item =>
-                    String(item.id) !== String(id)
+                    String(item.id) !==
+                    String(id)
             );
+
 
         salvarDados();
 
         renderLista();
 
-        mostrarToast("Item removido.");
+
+        mostrarToast(
+            "Item removido."
+        );
 
     }
 
@@ -2518,30 +2788,43 @@
 
         if(lista.length === 0){
 
-            mostrarToast("A lista já está vazia.");
+            mostrarToast(
+                "A lista já está vazia."
+            );
 
             return;
 
         }
+
 
         const confirmar =
             confirm(
                 "Tem certeza que deseja apagar toda a lista?"
             );
 
-        if(!confirmar) return;
+
+        if(!confirmar)
+            return;
+
 
         lista = [];
+
+        observacaoGeral = "";
+
 
         document.getElementById(
             "observacaoGeral"
         ).value = "";
 
+
         salvarDados();
 
         renderLista();
 
-        mostrarToast("Lista limpa.");
+
+        mostrarToast(
+            "Lista limpa para todos os celulares."
+        );
 
     }
 
@@ -2555,37 +2838,49 @@
         const totalQuantidade =
             lista.reduce(
                 (total,item) =>
-                    total + item.quantidade,
+                    total +
+                    Number(
+                        item.quantidade
+                    ),
                 0
             );
+
 
         const totalProdutos =
             lista.length;
 
+
         const totalSetores =
             new Set(
-                lista.map(item => item.setor)
+                lista.map(
+                    item => item.setor
+                )
             ).size;
+
 
         document.getElementById(
             "totalItens"
         ).textContent =
             totalQuantidade;
 
+
         document.getElementById(
             "totalProdutos"
         ).textContent =
             totalProdutos;
+
 
         document.getElementById(
             "totalSetores"
         ).textContent =
             totalSetores;
 
+
         document.getElementById(
             "listCount"
         ).textContent =
             totalQuantidade;
+
 
         document.getElementById(
             "whatsappBtn"
@@ -2611,13 +2906,14 @@
 
         }
 
+
         let mensagem =
-    `🦖 *CAVERNA DO DINO*
-    🛒 *LISTA DE COMPRAS*
+`🦖 *CAVERNA DO DINO*
+🛒 *LISTA DE COMPRAS*
 
-    👤 Responsável pela lista: *${usuarioAtual}*
+👤 Responsável pela lista: *${usuarioAtual}*
+`;
 
-    `;
 
         const ordemSetores = [
             "Pizza",
@@ -2626,60 +2922,78 @@
             "Bar"
         ];
 
-        ordemSetores.forEach(setor => {
 
-            const itens =
-                lista.filter(
-                    item => item.setor === setor
-                );
+        ordemSetores.forEach(
+            setor => {
 
-            if(itens.length === 0) return;
+                const itens =
+                    lista.filter(
+                        item =>
+                            item.setor ===
+                            setor
+                    );
 
-            mensagem +=
-    `\n${setores[setor].emoji} *${setor.toUpperCase()}*\n`;
 
-            itens.forEach(item => {
+                if(itens.length === 0)
+                    return;
+
 
                 mensagem +=
-    `\n• ${item.nome} — *${item.quantidade}x*`;
-
-                if(item.observacaoItem){
-
-                    mensagem +=
-    `\n  📝 ${item.observacaoItem}`;
-
-                }
-
-                mensagem += "\n";
-
-            });
-
-        });
+`\n${setores[setor].emoji} *${setor.toUpperCase()}*\n`;
 
 
-        const observacaoGeral =
+                itens.forEach(
+                    item => {
+
+                        mensagem +=
+`\n• ${item.nome} — *${item.quantidade}x*`;
+
+
+                        if(item.observacaoItem){
+
+                            mensagem +=
+`\n  📝 ${item.observacaoItem}`;
+
+                        }
+
+
+                        mensagem += "\n";
+
+                    }
+                );
+
+            }
+        );
+
+
+        const observacao =
             document.getElementById(
                 "observacaoGeral"
             ).value.trim();
 
-        if(observacaoGeral){
+
+        if(observacao){
 
             mensagem +=
-    `\n📌 *OBSERVAÇÃO GERAL*\n${observacaoGeral}\n`;
+`\n📌 *OBSERVAÇÃO GERAL*\n${observacao}\n`;
 
         }
 
 
         mensagem +=
-    `\n━━━━━━━━━━━━━━━━━━
-    📋 Lista enviada pelo sistema Caverna do Dino.`;
+`
+━━━━━━━━━━━━━━━━━━
+📋 Lista enviada pelo sistema Caverna do Dino.`;
 
 
         const url =
             "https://wa.me/" +
             numero +
             "?text=" +
-            encodeURIComponent(mensagem);
+            encodeURIComponent(
+                mensagem
+            );
+
 
         window.open(
             url,
@@ -2696,9 +3010,14 @@
     function escapeHTML(text){
 
         const div =
-            document.createElement("div");
+            document.createElement(
+                "div"
+            );
 
-        div.textContent = text;
+
+        div.textContent =
+            text;
+
 
         return div.innerHTML;
 
@@ -2708,17 +3027,36 @@
     function mostrarToast(texto){
 
         const toast =
-            document.getElementById("toast");
+            document.getElementById(
+                "toast"
+            );
 
-        toast.textContent = texto;
 
-        toast.classList.add("show");
+        toast.textContent =
+            texto;
 
-        setTimeout(() => {
 
-            toast.classList.remove("show");
+        toast.classList.add(
+            "show"
+        );
 
-        },2200);
+
+        clearTimeout(
+            window.toastTimer
+        );
+
+
+        window.toastTimer =
+            setTimeout(
+                () => {
+
+                    toast.classList.remove(
+                        "show"
+                    );
+
+                },
+                2200
+            );
 
     }
 
@@ -2726,7 +3064,9 @@
     function focarProdutos(){
 
         document
-            .getElementById("productsPanel")
+            .getElementById(
+                "productsPanel"
+            )
             .scrollIntoView({
                 behavior:"smooth"
             });
@@ -2738,38 +3078,62 @@
 
         const total =
             lista.reduce(
-                (a,b) => a + b.quantidade,
+                (a,b) =>
+                    a +
+                    Number(
+                        b.quantidade
+                    ),
                 0
             );
 
+
         const setoresUsados =
-            [...new Set(
-                lista.map(item => item.setor)
-            )];
+            [
+                ...new Set(
+                    lista.map(
+                        item =>
+                            item.setor
+                    )
+                )
+            ];
+
 
         let texto =
-    `RESUMO DA LISTA
+`RESUMO DA LISTA
 
-    Produtos diferentes: ${lista.length}
-    Quantidade total: ${total}
-    Setores: ${setoresUsados.length}
+Produtos diferentes: ${lista.length}
+Quantidade total: ${total}
+Setores: ${setoresUsados.length}
 
-    `;
+`;
 
-        setoresUsados.forEach(setor => {
 
-            const quantidade =
-                lista
-                .filter(i => i.setor === setor)
-                .reduce(
-                    (a,b) => a + b.quantidade,
-                    0
-                );
+        setoresUsados.forEach(
+            setor => {
 
-            texto +=
-    `${setores[setor].emoji} ${setor}: ${quantidade} item(ns)\n`;
+                const quantidade =
+                    lista
+                        .filter(
+                            i =>
+                                i.setor ===
+                                setor
+                        )
+                        .reduce(
+                            (a,b) =>
+                                a +
+                                Number(
+                                    b.quantidade
+                                ),
+                            0
+                        );
 
-        });
+
+                texto +=
+`${setores[setor].emoji} ${setor}: ${quantidade} item(ns)\n`;
+
+            }
+        );
+
 
         alert(texto);
 
@@ -2777,16 +3141,21 @@
 
 
     /* =========================================================
-       FECHAR MODAL CLICANDO FORA
+       FECHAR MODAL
     ========================================================= */
 
     document
-        .getElementById("modalOverlay")
+        .getElementById(
+            "modalOverlay"
+        )
         .addEventListener(
             "click",
             function(event){
 
-                if(event.target === this){
+                if(
+                    event.target ===
+                    this
+                ){
 
                     fecharModal();
 
@@ -2801,12 +3170,17 @@
     ========================================================= */
 
     document
-        .getElementById("loginPassword")
+        .getElementById(
+            "loginPassword"
+        )
         .addEventListener(
             "keydown",
             function(event){
 
-                if(event.key === "Enter"){
+                if(
+                    event.key ===
+                    "Enter"
+                ){
 
                     entrar();
 
@@ -2824,42 +3198,54 @@
         "DOMContentLoaded",
         function(){
 
+            renderCategorias();
+
+            renderProdutos();
+
+            renderLista();
+
+
             const usuarioSalvo =
                 localStorage.getItem(
                     "caverna_dino_usuario"
                 );
 
-            if(usuarioSalvo &&
-               funcionarios[usuarioSalvo]){
 
-                usuarioAtual = usuarioSalvo;
+            if(
+                usuarioSalvo &&
+                funcionarios[usuarioSalvo]
+            ){
+
+                usuarioAtual =
+                    usuarioSalvo;
+
 
                 document.getElementById(
                     "loginScreen"
-                ).style.display = "none";
+                ).style.display =
+                    "none";
+
 
                 document.getElementById(
                     "app"
-                ).style.display = "block";
+                ).style.display =
+                    "block";
+
 
                 document.getElementById(
                     "sidebarUser"
                 ).textContent =
                     usuarioAtual;
 
-                carregarDados();
 
-                renderCategorias();
-
-                renderProdutos();
-
-                renderLista();
+                iniciarFirebase();
 
             }else{
 
                 document.getElementById(
                     "loginScreen"
-                ).style.display = "flex";
+                ).style.display =
+                    "flex";
 
             }
 
@@ -2870,3 +3256,4 @@
 
 </body>
 </html>
+```
