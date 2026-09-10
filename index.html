@@ -1846,51 +1846,51 @@
     const produtos = [
 
         // CARNES
-        {nome:"Carne bovina",categoria:"Carnes",emoji:"🥩"},
-        {nome:"Frango",categoria:"Carnes",emoji:"🍗"},
-        {nome:"Calabresa",categoria:"Carnes",emoji:"🌭"},
-        {nome:"Bacon",categoria:"Carnes",emoji:"🥓"},
-        {nome:"Linguiça",categoria:"Carnes",emoji:"🌭"},
+        {id:"carne_bovina",nome:"Carne bovina",categoria:"Carnes",emoji:"🥩"},
+        {id:"frango",nome:"Frango",categoria:"Carnes",emoji:"🍗"},
+        {id:"calabresa",nome:"Calabresa",categoria:"Carnes",emoji:"🌭"},
+        {id:"bacon",nome:"Bacon",categoria:"Carnes",emoji:"🥓"},
+        {id:"linguica",nome:"Linguiça",categoria:"Carnes",emoji:"🌭"},
 
         // BEBIDAS
-        {nome:"Coca-Cola",categoria:"Bebidas",emoji:"🥤"},
-        {nome:"Guaraná",categoria:"Bebidas",emoji:"🥤"},
-        {nome:"Água",categoria:"Bebidas",emoji:"💧"},
-        {nome:"Suco",categoria:"Bebidas",emoji:"🧃"},
+        {id:"coca_cola",nome:"Coca-Cola",categoria:"Bebidas",emoji:"🥤"},
+        {id:"guarana",nome:"Guaraná",categoria:"Bebidas",emoji:"🥤"},
+        {id:"agua",nome:"Água",categoria:"Bebidas",emoji:"💧"},
+        {id:"suco",nome:"Suco",categoria:"Bebidas",emoji:"🧃"},
 
         // MASSAS
-        {nome:"Massa de pizza",categoria:"Massas",emoji:"🍕"},
-        {nome:"Macarrão",categoria:"Massas",emoji:"🍝"},
-        {nome:"Farinha de trigo",categoria:"Massas",emoji:"🌾"},
-        {nome:"Farinha de rosca",categoria:"Massas",emoji:"🥖"},
+        {id:"massa_de_pizza",nome:"Massa de pizza",categoria:"Massas",emoji:"🍕"},
+        {id:"macarrao",nome:"Macarrão",categoria:"Massas",emoji:"🍝"},
+        {id:"farinha_de_trigo",nome:"Farinha de trigo",categoria:"Massas",emoji:"🌾"},
+        {id:"farinha_de_rosca",nome:"Farinha de rosca",categoria:"Massas",emoji:"🥖"},
 
         // HORTIFRUTI
-        {nome:"Tomate",categoria:"Hortifruti",emoji:"🍅"},
-        {nome:"Cebola",categoria:"Hortifruti",emoji:"🧅"},
-        {nome:"Alface",categoria:"Hortifruti",emoji:"🥬"},
-        {nome:"Pimentão",categoria:"Hortifruti",emoji:"🫑"},
-        {nome:"Alho",categoria:"Hortifruti",emoji:"🧄"},
+        {id:"tomate",nome:"Tomate",categoria:"Hortifruti",emoji:"🍅"},
+        {id:"cebola",nome:"Cebola",categoria:"Hortifruti",emoji:"🧅"},
+        {id:"alface",nome:"Alface",categoria:"Hortifruti",emoji:"🥬"},
+        {id:"pimentao",nome:"Pimentão",categoria:"Hortifruti",emoji:"🫑"},
+        {id:"alho",nome:"Alho",categoria:"Hortifruti",emoji:"🧄"},
 
         // LATICÍNIOS
-        {nome:"Queijo mussarela",categoria:"Laticínios",emoji:"🧀"},
-        {nome:"Catupiry",categoria:"Laticínios",emoji:"🧀"},
-        {nome:"Requeijão",categoria:"Laticínios",emoji:"🥛"},
+        {id:"queijo_mussarela",nome:"Queijo mussarela",categoria:"Laticínios",emoji:"🧀"},
+        {id:"catupiry",nome:"Catupiry",categoria:"Laticínios",emoji:"🧀"},
+        {id:"requeijao",nome:"Requeijão",categoria:"Laticínios",emoji:"🥛"},
 
         // MERCEARIA
-        {nome:"Molho de tomate",categoria:"Mercearia",emoji:"🍅"},
-        {nome:"Óleo",categoria:"Mercearia",emoji:"🫗"},
-        {nome:"Azeite",categoria:"Mercearia",emoji:"🫒"},
-        {nome:"Sal",categoria:"Mercearia",emoji:"🧂"},
-        {nome:"Açúcar",categoria:"Mercearia",emoji:"🍚"},
-        {nome:"Orégano",categoria:"Mercearia",emoji:"🌿"},
-        {nome:"Ovos",categoria:"Mercearia",emoji:"🥚"},
+        {id:"molho_de_tomate",nome:"Molho de tomate",categoria:"Mercearia",emoji:"🍅"},
+        {id:"oleo",nome:"Óleo",categoria:"Mercearia",emoji:"🫗"},
+        {id:"azeite",nome:"Azeite",categoria:"Mercearia",emoji:"🫒"},
+        {id:"sal",nome:"Sal",categoria:"Mercearia",emoji:"🧂"},
+        {id:"acucar",nome:"Açúcar",categoria:"Mercearia",emoji:"🍚"},
+        {id:"oregano",nome:"Orégano",categoria:"Mercearia",emoji:"🌿"},
+        {id:"ovos",nome:"Ovos",categoria:"Mercearia",emoji:"🥚"},
 
         // LIMPEZA
-        {nome:"Detergente",categoria:"Limpeza",emoji:"🧴"},
-        {nome:"Desinfetante",categoria:"Limpeza",emoji:"🧹"},
-        {nome:"Papel toalha",categoria:"Limpeza",emoji:"🧻"},
-        {nome:"Papel higiênico",categoria:"Limpeza",emoji:"🧻"},
-        {nome:"Saco de lixo",categoria:"Limpeza",emoji:"🗑️"}
+        {id:"detergente",nome:"Detergente",categoria:"Limpeza",emoji:"🧴"},
+        {id:"desinfetante",nome:"Desinfetante",categoria:"Limpeza",emoji:"🧹"},
+        {id:"papel_toalha",nome:"Papel toalha",categoria:"Limpeza",emoji:"🧻"},
+        {id:"papel_higienico",nome:"Papel higiênico",categoria:"Limpeza",emoji:"🧻"},
+        {id:"saco_de_lixo",nome:"Saco de lixo",categoria:"Limpeza",emoji:"🗑️"}
 
     ];
 
@@ -2617,8 +2617,16 @@
             lista.find(
                 item =>
 
-                    item.nome ===
-                        produtoSelecionado.nome &&
+                    (
+                        item.produtoId ===
+                            produtoSelecionado.id ||
+
+                        (
+                            !item.produtoId &&
+                            item.nome ===
+                                produtoSelecionado.nome
+                        )
+                    ) &&
 
                     item.setor ===
                         setor &&
@@ -2644,6 +2652,9 @@
                 id:
                     Date.now() +
                     Math.random(),
+
+                produtoId:
+                    produtoSelecionado.id,
 
                 nome:
                     produtoSelecionado.nome,
