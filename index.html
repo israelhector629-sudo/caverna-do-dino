@@ -1301,9 +1301,9 @@
                 onkeydown="if(event.key==='Enter') entrar()"
         >
 
-        <button type="button" class="login-btn" id="btnEntrar">
-    ENTRAR NO SISTEMA
-</button>
+        <button class="login-btn" onclick="entrar()">
+            ENTRAR NO SISTEMA
+        </button>
 
         <div id="loginError" class="login-error"></div>
 
@@ -1327,7 +1327,7 @@
             <div class="brand">
 
                 <div class="brand-icon">
-                    <img src="./logo.png"
+                    <img src="../../../../../../Desktop/Sistema%20pedidos/logo.png" alt="Caverna do Dino" class="logo-img">
                 </div>
 
                 <div class="brand-text">
@@ -1388,7 +1388,7 @@
                 <div class="mobile-brand">
 
                     <div class="mobile-brand-icon">
-                        <img src="./logo.png"
+                        <img src="../../../../../../Desktop/Sistema%20pedidos/logo.png" alt="Caverna do Dino" class="logo-img">
                     </div>
 
                     <div>
@@ -1808,7 +1808,7 @@
     const produtos = [
 
         // CARNES
-        {nome:"Carne artesanal",categoria:"Carnes",emoji:"🥩"},
+        {nome:"Carne bovina",categoria:"Carnes",emoji:"🥩"},
         {nome:"Frango",categoria:"Carnes",emoji:"🍗"},
         {nome:"Calabresa",categoria:"Carnes",emoji:"🌭"},
         {nome:"Bacon",categoria:"Carnes",emoji:"🥓"},
@@ -1821,12 +1821,10 @@
         {nome:"Suco",categoria:"Bebidas",emoji:"🧃"},
 
         // MASSAS
-        {nome:"Farinha panco",categoria:"Massas",emoji:"🍕"},
+        {nome:"Massa de pizza",categoria:"Massas",emoji:"🍕"},
         {nome:"Macarrão",categoria:"Massas",emoji:"🍝"},
         {nome:"Farinha de trigo",categoria:"Massas",emoji:"🌾"},
         {nome:"Farinha de rosca",categoria:"Massas",emoji:"🥖"},
-        {nome:"Fermento",categoria:"Massas",emoji:"🥖"},
-
 
         // HORTIFRUTI
         {nome:"Tomate",categoria:"Hortifruti",emoji:"🍅"},
@@ -2867,7 +2865,7 @@
 
         }
     );
-document.getElementById("btnEntrar").addEventListener("click", entrar);
+
 </script>
 
 </body>
