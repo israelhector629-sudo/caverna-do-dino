@@ -36,7 +36,71 @@
             --orange:#ffb020;
             --shadow:0 20px 60px rgba(0,0,0,.45);
         }
+/* ========================================
+   EFEITO AO ADICIONAR PRODUTO
+======================================== */
 
+.item-adicionado {
+    animation: itemEntrando 0.7s cubic-bezier(.17,.67,.35,1.3);
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes itemEntrando {
+    0% {
+        opacity: 0;
+        transform: translateY(25px) scale(0.92);
+        box-shadow: 0 0 0 rgba(0, 255, 120, 0);
+    }
+
+    45% {
+        opacity: 1;
+        transform: translateY(-5px) scale(1.04);
+        box-shadow:
+            0 0 12px rgba(0, 255, 120, 0.7),
+            0 0 30px rgba(0, 255, 120, 0.35);
+    }
+
+    70% {
+        transform: translateY(2px) scale(0.99);
+    }
+
+    100% {
+        transform: translateY(0) scale(1);
+        box-shadow: 0 0 0 rgba(0, 255, 120, 0);
+    }
+}
+
+/* Brilho passando pelo item */
+.item-adicionado::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 70%;
+    height: 100%;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.35),
+        transparent
+    );
+
+    transform: skewX(-20deg);
+
+    animation: brilhoPassando 0.7s ease;
+}
+
+@keyframes brilhoPassando {
+    from {
+        left: -120%;
+    }
+
+    to {
+        left: 150%;
+    }
+}
         html,body{
             min-height:100%;
         }
@@ -4006,11 +4070,11 @@ Setores: ${setoresUsados.length}
 
         }
     );
-elemento.classList.add("produto-adicionado");
+elemento.classList.add("item-adicionado");
 
 setTimeout(() => {
-    elemento.classList.remove("produto-adicionado");
-}, 600);
+    elemento.classList.remove("item-adicionado");
+}, 700);
 </script>
 
 </body>
