@@ -68,6 +68,59 @@
                 #050706;
         }
 
+        /* Animação de entrada dos produtos */
+.produto,
+.product-card,
+.item-produto {
+    animation: entrarProduto 0.5s ease both;
+}
+.produto-adicionado {
+    animation: produtoAdicionado 0.6s ease;
+}
+
+@keyframes produtoAdicionado {
+    0% {
+        transform: scale(1);
+    }
+
+    40% {
+        transform: scale(1.05);
+        box-shadow: 0 0 25px rgba(0, 255, 120, 0.7);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+        .brilho-dino {
+    box-shadow:
+        0 0 5px rgba(0, 255, 120, 0.25),
+        0 0 15px rgba(0, 255, 120, 0.15);
+}
+        /* Brilho verde da Caverna do Dino */
+button,
+.card,
+.produto,
+.product-card {
+    transition: all 0.25s ease;
+}
+
+button:hover,
+.produto:hover,
+.product-card:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 120, 0.35);
+}
+@keyframes entrarProduto {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
         .login-box{
             width:100%;
             max-width:430px;
@@ -3776,7 +3829,11 @@ Setores: ${setoresUsados.length}
 
         }
     );
+elemento.classList.add("produto-adicionado");
 
+setTimeout(() => {
+    elemento.classList.remove("produto-adicionado");
+}, 600);
 </script>
 
 </body>
