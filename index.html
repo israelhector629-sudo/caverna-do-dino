@@ -517,7 +517,13 @@ button:hover,
             gap:13px;
             padding:5px 8px 28px;
         }
-
+.product-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
         .brand-icon{
             width:49px;
             height:49px;
@@ -2484,7 +2490,7 @@ button:active {
         {id:"Abacaxi",nome:"Abacaxi",categoria:"Hortifruti",emoji:"🧄"},
 
         // LATICÍNIOS
-        {id:"Mussarela",nome:"Mussarela",categoria:"Laticínios",emoji:"🧀"},
+        {id:"Mussarela",nome:"Mussarela",categoria:"Laticínios",imagem:"produtos/muss.png"}
         {id:"Presunto parma",nome:"Presunto parma",categoria:"Laticínios",emoji:"🧀"},
         {id:"Mussarela fatiada",nome:"Mussarela fatiada",categoria:"Laticínios",emoji:"🧀"},
         {id:"Cheddar bisnaga",nome:"Cheddar bisnaga",categoria:"Laticínios",emoji:"🧀"},
@@ -3080,9 +3086,9 @@ button:active {
 
                 div.innerHTML = `
 
-                    <div class="product-icon">
-                        ${produto.emoji}
-                    </div>
+                   <div class="product-icon">
+    <img src="${produto.imagem}" alt="${produto.nome}">
+</div>
 
                     <div class="product-name">
                         ${produto.nome}
