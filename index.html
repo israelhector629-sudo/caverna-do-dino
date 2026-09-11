@@ -1278,6 +1278,230 @@
         .dino-logo{
             overflow:hidden;
         }
+        /* =========================================================
+   ANIMAÇÕES DA CAVERNA DO DINO
+   ========================================================= */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes aparecerZoom {
+    from {
+        opacity: 0;
+        transform: scale(.94);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes brilhoDino {
+    0%, 100% {
+        box-shadow:
+            0 0 0 rgba(25,232,117,0);
+    }
+
+    50% {
+        box-shadow:
+            0 0 25px rgba(25,232,117,.25);
+    }
+}
+
+@keyframes pulsar {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.04);
+    }
+}
+
+@keyframes girar {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* LOGIN */
+
+.login-box {
+    animation: aparecerZoom .6s ease;
+}
+
+.dino-logo {
+    animation:
+        aparecerZoom .7s ease,
+        brilhoDino 3s ease-in-out infinite;
+}
+
+
+/* APP */
+
+.main {
+    animation: aparecer .5s ease;
+}
+
+
+/* CARDS DE ESTATÍSTICAS */
+
+.stat-card {
+    animation: aparecer .5s ease both;
+}
+
+.stat-card:nth-child(1) {
+    animation-delay: .05s;
+}
+
+.stat-card:nth-child(2) {
+    animation-delay: .10s;
+}
+
+.stat-card:nth-child(3) {
+    animation-delay: .15s;
+}
+
+
+/* PRODUTOS */
+
+.product {
+    animation: aparecer .4s ease both;
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+}
+
+.product:hover {
+    transform: translateY(-5px) scale(1.01);
+}
+
+
+/* ÍCONE DOS PRODUTOS */
+
+.product-icon {
+    transition:
+        transform .25s ease,
+        background .25s ease;
+}
+
+.product:hover .product-icon {
+    transform: scale(1.12) rotate(-3deg);
+}
+
+
+/* BOTÕES */
+
+button {
+    transition:
+        transform .15s ease,
+        filter .2s ease,
+        box-shadow .2s ease;
+}
+
+button:active {
+    transform: scale(.96);
+}
+
+
+/* MENU */
+
+.menu-btn {
+    transition:
+        transform .2s ease,
+        background .2s ease,
+        color .2s ease;
+}
+
+.menu-btn:hover {
+    transform: translateX(4px);
+}
+
+
+/* LISTA */
+
+.list-item {
+    animation: aparecer .35s ease both;
+    transition:
+        transform .2s ease,
+        border-color .2s ease,
+        background .2s ease;
+}
+
+.list-item:hover {
+    transform: translateX(3px);
+}
+
+
+/* SETORES */
+
+.sector-block {
+    animation: aparecer .4s ease both;
+}
+
+
+/* MODAL */
+
+.modal {
+    animation: aparecerZoom .25s ease;
+}
+
+
+/* TOAST */
+
+.toast.show {
+    animation: aparecerZoom .25s ease;
+}
+
+
+/* WHATSAPP */
+
+.whatsapp-btn:hover {
+    animation: pulsar .7s ease-in-out;
+}
+
+
+/* LOGOS */
+
+.brand-icon img,
+.mobile-brand-icon img {
+    transition: transform .3s ease;
+}
+
+.brand-icon:hover img,
+.mobile-brand-icon:hover img {
+    transform: scale(1.08) rotate(-2deg);
+}
+
+
+/* REDUZIR ANIMAÇÕES SE O CELULAR PEDIR */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+
+}
     </style>
 </head>
 
