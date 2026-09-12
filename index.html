@@ -2201,12 +2201,7 @@ button:active {
                     >
                         Limpar lista atual
                     </button>
-<button
-    class="history-btn"
-    onclick="abrirHistorico()"
->
-    📚 Histórico de Listas
-</button>
+
                 </section>
 
             </div>
@@ -3244,57 +3239,7 @@ button:active {
     /* =========================================================
        ADICIONAR ITEM
     ========================================================= */
-async function salvarListaEnviada() {
 
-    if (!lista || lista.length === 0) {
-        alert("A lista está vazia.");
-        return false;
-    }
-
-    const agora = new Date();
-
-    const dadosLista = {
-        responsavel: usuarioAtual || "Não informado",
-
-        data: agora.toLocaleDateString("pt-BR"),
-
-        hora: agora.toLocaleTimeString("pt-BR", {
-            hour: "2-digit",
-            minute: "2-digit"
-        }),
-
-        dataHora: Date.now(),
-
-        itens: lista.map(item => ({
-            id: item.id || "",
-            nome: item.nome || "",
-            quantidade: Number(item.quantidade) || 1,
-            observacaoItem: item.observacaoItem || ""
-        })),
-
-        observacaoGeral:
-            document.getElementById("observacaoGeral")?.value || ""
-    };
-
-    try {
-
-        await database
-            .ref("listasEnviadas")
-            .push(dadosLista);
-
-        console.log("✅ Lista salva no histórico.");
-
-        return true;
-
-    } catch (erro) {
-
-        console.error("❌ Erro ao salvar lista:", erro);
-
-        alert("Não foi possível salvar o histórico da lista.");
-
-        return false;
-    }
-}
     function confirmarAdicao(){
 
         if(!produtoSelecionado){
@@ -3306,24 +3251,7 @@ async function salvarListaEnviada() {
             return;
 
         }
-const salvou = await salvarListaEnviada();
 
-if (!salvou) {
-    return;
-}
-
-window.open(
-    `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`,
-    "_blank"
-);
-
-lista = [];
-
-document.getElementById("observacaoGeral").value = "";
-
-renderLista();
-
-salvarDados();
 
         const setor =
             document.getElementById(
@@ -3873,20 +3801,20 @@ const SENHA_EXCLUSAO = "1234";
        WHATSAPP
     ========================================================= */
 
-    async function enviarWhatsApp(){
+    function enviarWhatsApp(){
 
-    if(lista.length === 0){
+        if(lista.length === 0){
 
-        mostrarToast(
-            "Adicione pelo menos um produto."
-        );
+            mostrarToast(
+                "Adicione pelo menos um produto."
+            );
 
-        return;
+            return;
 
-    }
+        }
 
 
-    let mensagem =
+        let mensagem =
 `🦖 *CAVERNA DO DINO*
 🛒 *LISTA DE COMPRAS*
 
@@ -3895,205 +3823,93 @@ const SENHA_EXCLUSAO = "1234";
 `;
 
 
-    const ordemSetores = [
+        const ordemSetores = [
 
-        "Pizza",
-        "Cozinha",
-        "Lanchonete",
-        "Bar"
+            "Pizza",
+            "Cozinha",
+            "Lanchonete",
+            "Bar"
 
-    ];
-
-
-    ordemSetores.forEach(
-        setor => {
-
-            const itens =
-                lista.filter(
-                    item =>
-                        item.setor ===
-                        setor
-                );
+        ];
 
 
-            if(itens.length === 0)
-                return;
+        ordemSetores.forEach(
+            setor => {
+
+                const itens =
+                    lista.filter(
+                        item =>
+                            item.setor ===
+                            setor
+                    );
 
 
-            mensagem +=
+                if(itens.length === 0)
+                    return;
+
+
+                mensagem +=
 `\n━━━━━━━━━━━━━━━━━━\n${setores[setor].emoji} *${setor.toUpperCase()}*\n━━━━━━━━━━━━━━━━━━\n`;
 
 
-            itens.forEach(
-                item => {
+                itens.forEach(
+                    item => {
 
-                    mensagem +=
+                        mensagem +=
 `\n• ${item.nome} — *${item.quantidade}x*`;
 
 
-                    if(item.observacaoItem){
+                        if(item.observacaoItem){
 
-                        mensagem +=
+                            mensagem +=
 `\n  📝 ${item.observacaoItem}`;
 
+                        }
+
+
+                        mensagem += "\n";
+
                     }
+                );
+
+            }
+        );
 
 
-                    mensagem += "\n";
-
-                }
-            );
-
-        }
-    );
+        const observacaoGeral =
+            document.getElementById(
+                "observacaoGeral"
+            ).value.trim();
 
 
-    const observacaoGeral =
-        document.getElementById(
-            "observacaoGeral"
-        ).value.trim();
+        if(observacaoGeral){
 
-
-    if(observacaoGeral){
-
-        mensagem +=
+            mensagem +=
 `\n📌 *OBSERVAÇÃO GERAL*\n${observacaoGeral}\n`;
 
-    }
+        }
 
 
-    mensagem +=
+        mensagem +=
 `\n━━━━━━━━━━━━━━━━━━
 📋 Lista enviada pelo sistema Caverna do Dino.`;
 
 
-
-    /* =====================================
-       SALVAR CÓPIA DA LISTA NO HISTÓRICO
-       ===================================== */
-
-    const agora = new Date();
-
-    const listaHistorico = {
-
-        responsavel:
-            usuarioAtual || "Não informado",
-
-        data:
-            agora.toLocaleDateString("pt-BR"),
-
-        hora:
-            agora.toLocaleTimeString(
-                "pt-BR",
-                {
-                    hour: "2-digit",
-                    minute: "2-digit"
-                }
-            ),
-
-        dataHora:
-            Date.now(),
-
-        itens:
-            lista.map(
-                item => ({
-
-                    id:
-                        item.id || "",
-
-                    nome:
-                        item.nome || "",
-
-                    quantidade:
-                        Number(item.quantidade) || 1,
-
-                    observacaoItem:
-                        item.observacaoItem || "",
-
-                    setor:
-                        item.setor || ""
-
-                })
-            ),
-
-        observacaoGeral:
-            observacaoGeral
-
-    };
+        const url =
+            "https://wa.me/" +
+            numero +
+            "?text=" +
+            encodeURIComponent(
+                mensagem
+            );
 
 
-    try{
-
-        await database
-            .ref("listasEnviadas")
-            .push(listaHistorico);
-
-
-        console.log(
-            "✅ Lista salva no histórico."
+        window.open(
+            url,
+            "_blank"
         );
-
-
-    }catch(erro){
-
-        console.error(
-            "❌ Erro ao salvar histórico:",
-            erro
-        );
-
-        mostrarToast(
-            "Erro ao salvar o histórico."
-        );
-
-        return;
 
     }
-
-
-
-    /* =====================================
-       ABRIR WHATSAPP
-       ===================================== */
-
-    const url =
-        "https://wa.me/" +
-        numero +
-        "?text=" +
-        encodeURIComponent(
-            mensagem
-        );
-
-
-    window.open(
-        url,
-        "_blank"
-    );
-
-
-
-    /* =====================================
-       LIMPAR LISTA ATUAL
-       ===================================== */
-
-    lista = [];
-
-
-    document.getElementById(
-        "observacaoGeral"
-    ).value = "";
-
-
-    renderLista();
-
-
-    salvarDados();
-
-
-    mostrarToast(
-        "✅ Lista enviada e salva no histórico!"
-    );
-
-}
 
 
     /* =========================================================
