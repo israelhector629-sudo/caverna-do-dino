@@ -3893,12 +3893,26 @@ const SENHA_EXCLUSAO = "1234";
             );
 
 
-        window.open(
-            url,
-            "_blank"
-        );
+       window.open(
+    url,
+    "_blank"
+);
 
-    }
+// LIMPA A LISTA DEPOIS DE ENVIAR
+lista = [];
+
+document.getElementById(
+    "observacaoGeral"
+).value = "";
+
+salvarDados();
+renderLista();
+
+mostrarToast(
+    "✅ Lista enviada e zerada!"
+);
+
+}
 
 
     /* =========================================================
