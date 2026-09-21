@@ -3691,7 +3691,7 @@ const SENHA_EXCLUSAO = "1234";
        WHATSAPP
     ========================================================= */
 
-  function enviarWhatsApp(){
+ function enviarWhatsApp(){
 
     if(lista.length === 0){
 
@@ -3761,21 +3761,47 @@ const SENHA_EXCLUSAO = "1234";
         encodeURIComponent(mensagem);
 
 
-    // ESCOLHA DO DESTINATÁRIO
-    const escolha = confirm(
-        "🦖 Enviar lista para:\n\n" +
-        "OK = Contato 1\n" +
-        "Cancelar = Contato 2"
+    // ==============================
+    // ESCOLHA DO DESTINO
+    // ==============================
+
+    const escolha = prompt(
+        "🦖 CAVERNA DO DINO\n\n" +
+        "Para quem deseja enviar a lista?\n\n" +
+        "1️⃣ Contato 1\n" +
+        "2️⃣ Contato 2\n" +
+        "3️⃣ OS DOIS\n\n" +
+        "Digite 1, 2 ou 3:"
     );
 
-    if(escolha){
+
+    // CANCELAR
+    if(escolha === null){
+
+        return;
+
+    }
+
+
+    // ==============================
+    // CONTATO 1
+    // ==============================
+
+    if(escolha === "1"){
 
         window.open(
             url1,
             "_blank"
         );
 
-    } else {
+    }
+
+
+    // ==============================
+    // CONTATO 2
+    // ==============================
+
+    else if(escolha === "2"){
 
         window.open(
             url2,
@@ -3784,9 +3810,45 @@ const SENHA_EXCLUSAO = "1234";
 
     }
 
-    /*
-        ZERA A LISTA
-    */
+
+    // ==============================
+    // OS DOIS
+    // ==============================
+
+    else if(escolha === "3"){
+
+        window.open(
+            url1,
+            "_blank"
+        );
+
+        setTimeout(() => {
+
+            window.open(
+                url2,
+                "_blank"
+            );
+
+        }, 1000);
+
+    }
+
+
+    // OPÇÃO INVÁLIDA
+    else {
+
+        mostrarToast(
+            "❌ Opção inválida."
+        );
+
+        return;
+
+    }
+
+
+    // ==============================
+    // ZERAR LISTA
+    // ==============================
 
     lista = [];
 
