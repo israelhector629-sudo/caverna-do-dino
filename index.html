@@ -3691,7 +3691,7 @@ const SENHA_EXCLUSAO = "1234";
        WHATSAPP
     ========================================================= */
 
-   function enviarWhatsApp(){
+  function enviarWhatsApp(){
 
     if(lista.length === 0){
 
@@ -3700,7 +3700,6 @@ const SENHA_EXCLUSAO = "1234";
         );
 
         return;
-
     }
 
     let mensagem =
@@ -3714,28 +3713,21 @@ const SENHA_EXCLUSAO = "1234";
 ━━━━━━━━━━━━━━━━━━
 `;
 
-    /*
-        LISTA ÚNICA
-        Sem setores
-    */
+    lista.forEach(item => {
 
-    lista.forEach(
-        item => {
-
-            mensagem +=
+        mensagem +=
 `\n• ${item.nome} — *${item.quantidade}x*`;
 
-            if(item.observacaoItem){
+        if(item.observacaoItem){
 
-                mensagem +=
+            mensagem +=
 `\n  📝 ${item.observacaoItem}`;
 
-            }
-
-            mensagem += "\n";
-
         }
-    );
+
+        mensagem += "\n";
+
+    });
 
     const observacaoGeral =
         document.getElementById(
@@ -3753,10 +3745,6 @@ const SENHA_EXCLUSAO = "1234";
 `\n━━━━━━━━━━━━━━━━━━
 📋 Lista enviada pelo sistema Caverna do Dino.`;
 
-    // ==============================
-    // DOIS CONTATOS
-    // ==============================
-
     const numero1 = "5516993061879";
     const numero2 = "5516988291300";
 
@@ -3772,16 +3760,32 @@ const SENHA_EXCLUSAO = "1234";
         "?text=" +
         encodeURIComponent(mensagem);
 
-    // Abre os dois WhatsApps
-    window.open(url1, "_blank");
 
-    setTimeout(() => {
-        window.open(url2, "_blank");
-    }, 500);
+    // ESCOLHA DO DESTINATÁRIO
+    const escolha = confirm(
+        "🦖 Enviar lista para:\n\n" +
+        "OK = Contato 1\n" +
+        "Cancelar = Contato 2"
+    );
+
+    if(escolha){
+
+        window.open(
+            url1,
+            "_blank"
+        );
+
+    } else {
+
+        window.open(
+            url2,
+            "_blank"
+        );
+
+    }
 
     /*
         ZERA A LISTA
-        depois de abrir os WhatsApps
     */
 
     lista = [];
@@ -3795,11 +3799,10 @@ const SENHA_EXCLUSAO = "1234";
     renderLista();
 
     mostrarToast(
-        "✅ Lista enviada para os dois contatos e zerada!"
+        "✅ Lista enviada e zerada!"
     );
 
 }
-
     /* =========================================================
        UTILIDADES
     ========================================================= */
