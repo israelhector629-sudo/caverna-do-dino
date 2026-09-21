@@ -2983,72 +2983,50 @@ button:active {
        CATEGORIAS
     ========================================================= */
 
-    function renderCategorias(){
+  function renderCategorias(){
 
-        const container =
-            document.getElementById(
-                "categories"
+    const container =
+        document.getElementById("categories");
+
+    const categorias = [
+        "Todos",
+        "Açougue",
+        "Mercado",
+        "Frios",
+        "Multpack"
+    ];
+
+    container.innerHTML = "";
+
+    categorias.forEach(categoria => {
+
+        const button =
+            document.createElement("button");
+
+        button.className =
+            "category-btn " +
+            (
+                categoriaAtual === categoria
+                ? "active"
+                : ""
             );
 
+        button.textContent = categoria;
 
-        const categorias = [
+        button.onclick = () => {
 
-            "Todos",
+            categoriaAtual = categoria;
 
-            ...new Set(
-                produtos.map(
-                    p => p.categoria
-                )
-            )
+            renderCategorias();
+            renderProdutos();
 
-        ];
+        };
 
+        container.appendChild(button);
 
-        container.innerHTML = "";
+    });
 
-
-        categorias.forEach(
-            categoria => {
-
-                const button =
-                    document.createElement(
-                        "button"
-                    );
-
-
-                button.className =
-                    "category-btn " +
-                    (
-                        categoriaAtual === categoria
-                        ? "active"
-                        : ""
-                    );
-
-
-                button.textContent =
-                    categoria;
-
-
-                button.onclick = () => {
-
-                    categoriaAtual =
-                        categoria;
-
-                    renderCategorias();
-
-                    renderProdutos();
-
-                };
-
-
-                container.appendChild(
-                    button
-                );
-
-            }
-        );
-
-    }
+}
 
 
     /* =========================================================
