@@ -3745,116 +3745,114 @@ const SENHA_EXCLUSAO = "1234";
 `\n━━━━━━━━━━━━━━━━━━
 📋 Lista enviada pelo sistema Caverna do Dino.`;
 
-    const numero1 = "5516993061879";
-    const numero2 = "5516988291300";
+    // Guarda a mensagem temporariamente
+    window.mensagemWhatsApp = mensagem;
+
+    // Abre o modal
+    abrirModalWhatsApp();
+
+}
+    function fecharModalWhatsApp(){
+
+    const modal =
+        document.getElementById(
+            "modalWhatsApp"
+        );
+
+    if(modal){
+        modal.remove();
+    }
+
+}
+
+
+function enviarWhatsAppPara(numero){
+
+    const mensagem =
+        window.mensagemWhatsApp;
+
+    if(!mensagem)
+        return;
+
+    const url =
+        "https://wa.me/" +
+        numero +
+        "?text=" +
+        encodeURIComponent(
+            mensagem
+        );
+
+    // Fecha o modal antes de abrir o WhatsApp
+    fecharModalWhatsApp();
+
+    window.location.href = url;
+
+    limparListaDepoisDoWhatsApp();
+
+}
+
+
+function enviarWhatsAppParaOsDois(){
+
+    const mensagem =
+        window.mensagemWhatsApp;
+
+    if(!mensagem)
+        return;
+
+    const numero1 =
+        "5516993061879";
+
+    const numero2 =
+        "5516988291300";
 
     const url1 =
         "https://wa.me/" +
         numero1 +
         "?text=" +
-        encodeURIComponent(mensagem);
+        encodeURIComponent(
+            mensagem
+        );
 
     const url2 =
         "https://wa.me/" +
         numero2 +
         "?text=" +
-        encodeURIComponent(mensagem);
-
-
-    // ==============================
-    // ESCOLHA DO DESTINO
-    // ==============================
-
-    const escolha = prompt(
-        "🦖 CAVERNA DO DINO\n\n" +
-        "Para quem deseja enviar a lista?\n\n" +
-        "1️⃣ Contato 1\n" +
-        "2️⃣ Contato 2\n" +
-        "3️⃣ OS DOIS\n\n" +
-        "Digite 1, 2 ou 3:"
-    );
-
-
-    // CANCELAR
-    if(escolha === null){
-
-        return;
-
-    }
-
-
-    // ==============================
-    // CONTATO 1
-    // ==============================
-
-    if(escolha === "1"){
-
-        window.open(
-            url1,
-            "_blank"
+        encodeURIComponent(
+            mensagem
         );
 
-    }
+    fecharModalWhatsApp();
+
+    // Abre o primeiro
+    window.location.href = url1;
+
+    /*
+       Depois de enviar manualmente no WhatsApp,
+       você poderá voltar ao sistema e escolher
+       o segundo contato.
+    */
+
+    window.mensagemWhatsAppSegundo =
+        url2;
+
+    limparListaDepoisDoWhatsApp();
+
+}
 
 
-    // ==============================
-    // CONTATO 2
-    // ==============================
-
-    else if(escolha === "2"){
-
-        window.open(
-            url2,
-            "_blank"
-        );
-
-    }
-
-
-    // ==============================
-    // OS DOIS
-    // ==============================
-
-    else if(escolha === "3"){
-
-        window.open(
-            url1,
-            "_blank"
-        );
-
-        setTimeout(() => {
-
-            window.open(
-                url2,
-                "_blank"
-            );
-
-        }, 1000);
-
-    }
-
-
-    // OPÇÃO INVÁLIDA
-    else {
-
-        mostrarToast(
-            "❌ Opção inválida."
-        );
-
-        return;
-
-    }
-
-
-    // ==============================
-    // ZERAR LISTA
-    // ==============================
+function limparListaDepoisDoWhatsApp(){
 
     lista = [];
 
-    document.getElementById(
-        "observacaoGeral"
-    ).value = "";
+    const observacao =
+        document.getElementById(
+            "observacaoGeral"
+        );
+
+    if(observacao){
+        observacao.value = "";
+    }
 
     salvarDados();
 
@@ -3865,6 +3863,7 @@ const SENHA_EXCLUSAO = "1234";
     );
 
 }
+    
     /* =========================================================
        UTILIDADES
     ========================================================= */
