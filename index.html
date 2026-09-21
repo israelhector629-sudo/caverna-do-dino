@@ -3851,7 +3851,7 @@ ${observacaoGeral}
     );
 
 }
-```
+
 
     
     /* =========================================================
@@ -3919,80 +3919,80 @@ ${observacaoGeral}
     }
 
 
-    function mostrarResumo(){
+   function mostrarResumo(){
 
-        const total =
-            lista.reduce(
+    const total =
+        lista.reduce(
+            (
+                a,
+                b
+            ) =>
+                a +
                 (
-                    a,
-                    b
-                ) =>
-                    a +
-                    (
-                        Number(
-                            b.quantidade
-                        ) || 0
-                    ),
-                0
-            );
-
-
-        const setoresUsados =
-            [
-                ...new Set(
-                    lista.map(
-                        item =>
-                            item.setor
-                    )
-                )
-            ];
-
-
-        let texto =
-`RESUMO DA LISTA
-
-Produtos diferentes: ${lista.length}
-Quantidade total: ${total}
-Setores: ${setoresUsados.length}
-
-`;
-
-
-        setoresUsados.forEach(
-            setor => {
-
-                const quantidade =
-                    lista
-                    .filter(
-                        i =>
-                            i.setor ===
-                            setor
-                    )
-                    .reduce(
-                        (
-                            a,
-                            b
-                        ) =>
-                            a +
-                            (
-                                Number(
-                                    b.quantidade
-                                ) || 0
-                            ),
-                        0
-                    );
-
-
-                texto +=
-`${setores[setor].emoji} ${setor}: ${quantidade} item(ns)\n`;
-
-            }
+                    Number(
+                        b.quantidade
+                    ) || 0
+                ),
+            0
         );
 
 
-        alert(texto);
+    const categoriasUsadas =
+        [
+            ...new Set(
+                lista.map(
+                    item =>
+                        item.categoria
+                )
+            )
+        ];
 
-    }
+
+    let texto =
+
+
+Produtos diferentes: ${lista.length}
+Quantidade total: ${total}
+Setores: ${categoriasUsadas.length}
+
+
+
+
+    categoriasUsadas.forEach(
+        categoria => {
+
+            const quantidade =
+                lista
+                .filter(
+                    i =>
+                        i.categoria ===
+                        categoria
+                )
+                .reduce(
+                    (
+                        a,
+                        b
+                    ) =>
+                        a +
+                        (
+                            Number(
+                                b.quantidade
+                            ) || 0
+                        ),
+                    0
+                );
+
+
+            texto +=
+`📦 ${categoria}: ${quantidade} item(ns)\n`;
+
+        }
+    );
+
+
+    alert(texto);
+
+}
 
 
     /* =========================================================
