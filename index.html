@@ -3722,125 +3722,105 @@ const SENHA_EXCLUSAO = "1234";
 
     function enviarWhatsApp(){
 
-        if(lista.length === 0){
+    if(lista.length === 0){
 
-            mostrarToast(
-                "Adicione pelo menos um produto."
-            );
+        mostrarToast(
+            "Adicione pelo menos um produto."
+        );
 
-            return;
+        return;
 
-        }
+    }
 
 
-        let mensagem =
+    let mensagem =
 `🦖 *CAVERNA DO DINO*
 🛒 *LISTA DE COMPRAS*
 
 👤 Responsável pela lista: *${usuarioAtual}*
 
+━━━━━━━━━━━━━━━━━━
+📋 *PRODUTOS*
+━━━━━━━━━━━━━━━━━━
 `;
 
 
-        const ordemSetores = [
+    /*
+        LISTA ÚNICA
+        Sem setores
+    */
 
-            "Pizza",
-            "Cozinha",
-            "Lanchonete",
-            "Bar"
-
-        ];
-
-
-        ordemSetores.forEach(
-            setor => {
-
-                const itens =
-                    lista.filter(
-                        item =>
-                            item.setor ===
-                            setor
-                    );
-
-
-                if(itens.length === 0)
-                    return;
-
-
-                mensagem +=
-`\n━━━━━━━━━━━━━━━━━━\n${setores[setor].emoji} *${setor.toUpperCase()}*\n━━━━━━━━━━━━━━━━━━\n`;
-
-
-                itens.forEach(
-                    item => {
-
-                        mensagem +=
-`\n• ${item.nome} — *${item.quantidade}x*`;
-
-
-                        if(item.observacaoItem){
-
-                            mensagem +=
-`\n  📝 ${item.observacaoItem}`;
-
-                        }
-
-
-                        mensagem += "\n";
-
-                    }
-                );
-
-            }
-        );
-
-
-        const observacaoGeral =
-            document.getElementById(
-                "observacaoGeral"
-            ).value.trim();
-
-
-        if(observacaoGeral){
+    lista.forEach(
+        item => {
 
             mensagem +=
-`\n📌 *OBSERVAÇÃO GERAL*\n${observacaoGeral}\n`;
+`\n• ${item.nome} — *${item.quantidade}x*`;
+
+            if(item.observacaoItem){
+
+                mensagem +=
+`\n  📝 ${item.observacaoItem}`;
+
+            }
+
+            mensagem += "\n";
 
         }
+    );
 
+
+    const observacaoGeral =
+        document.getElementById(
+            "observacaoGeral"
+        ).value.trim();
+
+
+    if(observacaoGeral){
 
         mensagem +=
+`\n📌 *OBSERVAÇÃO GERAL*\n${observacaoGeral}\n`;
+
+    }
+
+
+    mensagem +=
 `\n━━━━━━━━━━━━━━━━━━
 📋 Lista enviada pelo sistema Caverna do Dino.`;
 
 
-        const url =
-            "https://wa.me/" +
-            numero +
-            "?text=" +
-            encodeURIComponent(
-                mensagem
-            );
+    const url =
+        "https://wa.me/" +
+        numero +
+        "?text=" +
+        encodeURIComponent(
+            mensagem
+        );
 
 
-       window.open(
-    url,
-    "_blank"
-);
+    window.open(
+        url,
+        "_blank"
+    );
 
-// LIMPA A LISTA DEPOIS DE ENVIAR
-lista = [];
 
-document.getElementById(
-    "observacaoGeral"
-).value = "";
+    /*
+        ZERA A LISTA
+        depois de abrir o WhatsApp
+    */
 
-salvarDados();
-renderLista();
+    lista = [];
 
-mostrarToast(
-    "✅ Lista enviada e zerada!"
-);
+    document.getElementById(
+        "observacaoGeral"
+    ).value = "";
+
+    salvarDados();
+
+    renderLista();
+
+    mostrarToast(
+        "✅ Lista enviada e zerada!"
+    );
 
 }
 
