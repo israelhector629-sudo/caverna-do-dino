@@ -3691,6 +3691,7 @@ const SENHA_EXCLUSAO = "1234";
        WHATSAPP
     ========================================================= */
 
+```javascript
 function enviarWhatsApp(){
 
     if(lista.length === 0){
@@ -3713,208 +3714,108 @@ function enviarWhatsApp(){
 ━━━━━━━━━━━━━━━━━━
 `;
 
-    lista.forEach(item => {
 
-        mensagem +=
-`\n• ${item.nome} — *${item.quantidade}x*`;
+    /*
+        SETORES DA LISTA
+    */
 
-        if(item.observacaoItem){
+    const setores = [
+        {
+            nome: "AÇOUGUE",
+            icone: "🥩",
+            categoria: "Açougue"
+        },
+        {
+            nome: "MERCADO",
+            icone: "🛒",
+            categoria: "Mercado"
+        },
+        {
+            nome: "FRIOS",
+            icone: "🧀",
+            categoria: "Frios"
+        },
+        {
+            nome: "MULTPACK",
+            icone: "📦",
+            categoria: "Multpack"
+        }
+    ];
 
-            mensagem +=
-`\n  📝 ${item.observacaoItem}`;
 
+    /*
+        MONTA CADA SETOR
+    */
+
+    setores.forEach(setor => {
+
+        const produtosSetor =
+            lista.filter(
+                item =>
+                    item.categoria ===
+                    setor.categoria
+            );
+
+
+        if(produtosSetor.length === 0){
+            return;
         }
 
-        mensagem += "\n";
+
+        mensagem +=
+`\n━━━━━━━━━━━━━━━━━━
+${setor.icone} *${setor.nome}*
+━━━━━━━━━━━━━━━━━━
+`;
+
+
+        produtosSetor.forEach(item => {
+
+            mensagem +=
+`\n• ${item.nome} — *${item.quantidade}x*`;
+
+            if(item.observacaoItem){
+
+                mensagem +=
+`\n  📝 ${item.observacaoItem}`;
+
+            }
+
+            mensagem += "\n";
+
+        });
 
     });
+
+
+    /*
+        OBSERVAÇÃO GERAL
+    */
 
     const observacaoGeral =
         document.getElementById(
             "observacaoGeral"
         ).value.trim();
 
+
     if(observacaoGeral){
 
         mensagem +=
-`\n📌 *OBSERVAÇÃO GERAL*\n${observacaoGeral}\n`;
+`\n📌 *OBSERVAÇÃO GERAL*
+${observacaoGeral}
+`;
 
     }
+
 
     mensagem +=
 `\n━━━━━━━━━━━━━━━━━━
 📋 Lista enviada pelo sistema Caverna do Dino.`;
 
+
     /*
-        GUARDA A MENSAGEM
+        WHATSAPP
     */
-
-    window.mensagemWhatsApp =
-        mensagem;
-
-    abrirEscolhaWhatsApp();
-
-}
-    function abrirEscolhaWhatsApp(){
-
-    const antigo =
-        document.getElementById(
-            "escolhaWhatsApp"
-        );
-
-    if(antigo){
-        antigo.remove();
-    }
-
-    const modal =
-        document.createElement("div");
-
-    modal.id =
-        "escolhaWhatsApp";
-
-    modal.style.cssText = `
-        position:fixed;
-        inset:0;
-        z-index:999999;
-        background:rgba(0,0,0,.80);
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        padding:20px;
-    `;
-
-    modal.innerHTML = `
-
-        <div style="
-            width:100%;
-            max-width:400px;
-            background:#151515;
-            border-radius:22px;
-            padding:25px;
-            box-sizing:border-box;
-            text-align:center;
-            box-shadow:0 20px 60px rgba(0,0,0,.7);
-        ">
-
-            <div style="
-                font-size:50px;
-                margin-bottom:5px;
-            ">
-                🦖
-            </div>
-
-            <h2 style="
-                color:white;
-                margin:5px 0;
-            ">
-                Enviar lista
-            </h2>
-
-            <p style="
-                color:#aaa;
-                margin:8px 0 22px;
-            ">
-                Escolha o destinatário
-            </p>
-
-            <button
-                onclick="abrirWhatsAppContato('5516993061879')"
-                style="
-                    width:100%;
-                    padding:16px;
-                    margin-bottom:12px;
-                    border:0;
-                    border-radius:14px;
-                    background:#25D366;
-                    color:white;
-                    font-size:16px;
-                    font-weight:bold;
-                    cursor:pointer;
-                "
-            >
-                🟢 CONTATO 1
-            </button>
-
-            <button
-                onclick="abrirWhatsAppContato('5516988291300')"
-                style="
-                    width:100%;
-                    padding:16px;
-                    margin-bottom:12px;
-                    border:0;
-                    border-radius:14px;
-                    background:#128C7E;
-                    color:white;
-                    font-size:16px;
-                    font-weight:bold;
-                    cursor:pointer;
-                "
-            >
-                🔵 CONTATO 2
-            </button>
-
-            <button
-                onclick="abrirWhatsAppPrimeiro()"
-                style="
-                    width:100%;
-                    padding:16px;
-                    margin-bottom:12px;
-                    border:0;
-                    border-radius:14px;
-                    background:#f4c62d;
-                    color:#111;
-                    font-size:16px;
-                    font-weight:bold;
-                    cursor:pointer;
-                "
-            >
-                🦖 ENVIAR PARA OS DOIS
-            </button>
-
-            <button
-                onclick="fecharEscolhaWhatsApp()"
-                style="
-                    width:100%;
-                    padding:12px;
-                    border:0;
-                    border-radius:14px;
-                    background:#333;
-                    color:white;
-                    font-size:15px;
-                    cursor:pointer;
-                "
-            >
-                CANCELAR
-            </button>
-
-        </div>
-    `;
-
-    document.body.appendChild(modal);
-}
-    function fecharEscolhaWhatsApp(){
-
-    const modal =
-        document.getElementById(
-            "escolhaWhatsApp"
-        );
-
-    if(modal){
-        modal.remove();
-    }
-
-}
-    function abrirWhatsAppContato(numero){
-
-    const mensagem =
-        window.mensagemWhatsApp;
-
-    if(!mensagem){
-        mostrarToast(
-            "Erro: mensagem não encontrada."
-        );
-        return;
-    }
 
     const url =
         "https://wa.me/" +
@@ -3924,17 +3825,12 @@ function enviarWhatsApp(){
             mensagem
         );
 
-    fecharEscolhaWhatsApp();
-
-    /*
-        ABERTURA DIRETAMENTE
-        PELO CLIQUE DO USUÁRIO
-    */
 
     window.open(
         url,
         "_blank"
     );
+
 
     /*
         ZERA A LISTA
@@ -3951,55 +3847,12 @@ function enviarWhatsApp(){
     renderLista();
 
     mostrarToast(
-    "📱 WhatsApp aberto. A lista continua salva."
-);
-
-}
-    function abrirWhatsAppPrimeiro(){
-
-    const mensagem =
-        window.mensagemWhatsApp;
-
-    if(!mensagem){
-        mostrarToast(
-            "Erro: mensagem não encontrada."
-        );
-        return;
-    }
-
-    const numero =
-        "5516993061879";
-
-    const url =
-        "https://wa.me/" +
-        numero +
-        "?text=" +
-        encodeURIComponent(
-            mensagem
-        );
-
-    fecharEscolhaWhatsApp();
-
-    /*
-        ABRE SOMENTE O PRIMEIRO
-    */
-
-    window.open(
-        url,
-        "_blank"
-    );
-
-    /*
-        NÃO ZERA A LISTA!
-        Ela precisa continuar disponível
-        para o segundo envio.
-    */
-
-    mostrarToast(
-        "🦖 Envie para o primeiro contato e volte para enviar ao segundo."
+        "✅ Lista enviada e zerada!"
     );
 
 }
+```
+
     
     /* =========================================================
        UTILIDADES
