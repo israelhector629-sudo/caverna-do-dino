@@ -3691,7 +3691,7 @@ const SENHA_EXCLUSAO = "1234";
        WHATSAPP
     ========================================================= */
 
- function enviarWhatsApp(){
+function enviarWhatsApp(){
 
     if(lista.length === 0){
 
@@ -3745,18 +3745,158 @@ const SENHA_EXCLUSAO = "1234";
 `\n━━━━━━━━━━━━━━━━━━
 📋 Lista enviada pelo sistema Caverna do Dino.`;
 
-    // Guarda a mensagem temporariamente
-    window.mensagemWhatsApp = mensagem;
+    /*
+        GUARDA A MENSAGEM
+    */
 
-    // Abre o modal
-    abrirModalWhatsApp();
+    window.mensagemWhatsApp =
+        mensagem;
+
+    abrirEscolhaWhatsApp();
 
 }
-    function fecharModalWhatsApp(){
+    function abrirEscolhaWhatsApp(){
+
+    const antigo =
+        document.getElementById(
+            "escolhaWhatsApp"
+        );
+
+    if(antigo){
+        antigo.remove();
+    }
+
+    const modal =
+        document.createElement("div");
+
+    modal.id =
+        "escolhaWhatsApp";
+
+    modal.style.cssText = `
+        position:fixed;
+        inset:0;
+        z-index:999999;
+        background:rgba(0,0,0,.80);
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        padding:20px;
+    `;
+
+    modal.innerHTML = `
+
+        <div style="
+            width:100%;
+            max-width:400px;
+            background:#151515;
+            border-radius:22px;
+            padding:25px;
+            box-sizing:border-box;
+            text-align:center;
+            box-shadow:0 20px 60px rgba(0,0,0,.7);
+        ">
+
+            <div style="
+                font-size:50px;
+                margin-bottom:5px;
+            ">
+                🦖
+            </div>
+
+            <h2 style="
+                color:white;
+                margin:5px 0;
+            ">
+                Enviar lista
+            </h2>
+
+            <p style="
+                color:#aaa;
+                margin:8px 0 22px;
+            ">
+                Escolha o destinatário
+            </p>
+
+            <button
+                onclick="abrirWhatsAppContato('5516993061879')"
+                style="
+                    width:100%;
+                    padding:16px;
+                    margin-bottom:12px;
+                    border:0;
+                    border-radius:14px;
+                    background:#25D366;
+                    color:white;
+                    font-size:16px;
+                    font-weight:bold;
+                    cursor:pointer;
+                "
+            >
+                🟢 CONTATO 1
+            </button>
+
+            <button
+                onclick="abrirWhatsAppContato('5516988291300')"
+                style="
+                    width:100%;
+                    padding:16px;
+                    margin-bottom:12px;
+                    border:0;
+                    border-radius:14px;
+                    background:#128C7E;
+                    color:white;
+                    font-size:16px;
+                    font-weight:bold;
+                    cursor:pointer;
+                "
+            >
+                🔵 CONTATO 2
+            </button>
+
+            <button
+                onclick="abrirWhatsAppPrimeiro()"
+                style="
+                    width:100%;
+                    padding:16px;
+                    margin-bottom:12px;
+                    border:0;
+                    border-radius:14px;
+                    background:#f4c62d;
+                    color:#111;
+                    font-size:16px;
+                    font-weight:bold;
+                    cursor:pointer;
+                "
+            >
+                🦖 ENVIAR PARA OS DOIS
+            </button>
+
+            <button
+                onclick="fecharEscolhaWhatsApp()"
+                style="
+                    width:100%;
+                    padding:12px;
+                    border:0;
+                    border-radius:14px;
+                    background:#333;
+                    color:white;
+                    font-size:15px;
+                    cursor:pointer;
+                "
+            >
+                CANCELAR
+            </button>
+
+        </div>
+    `;
+
+    document.body.appendChild(modal);
+}
+    function fecharEscolhaWhatsApp(){
 
     const modal =
         document.getElementById(
-            "modalWhatsApp"
+            "escolhaWhatsApp"
         );
 
     if(modal){
@@ -3764,15 +3904,17 @@ const SENHA_EXCLUSAO = "1234";
     }
 
 }
-
-
-function enviarWhatsAppPara(numero){
+    function abrirWhatsAppContato(numero){
 
     const mensagem =
         window.mensagemWhatsApp;
 
-    if(!mensagem)
+    if(!mensagem){
+        mostrarToast(
+            "Erro: mensagem não encontrada."
+        );
         return;
+    }
 
     const url =
         "https://wa.me/" +
@@ -3782,84 +3924,79 @@ function enviarWhatsAppPara(numero){
             mensagem
         );
 
-    // Fecha o modal antes de abrir o WhatsApp
-    fecharModalWhatsApp();
-
-    window.location.href = url;
-
-    limparListaDepoisDoWhatsApp();
-
-}
-
-
-function enviarWhatsAppParaOsDois(){
-
-    const mensagem =
-        window.mensagemWhatsApp;
-
-    if(!mensagem)
-        return;
-
-    const numero1 =
-        "5516993061879";
-
-    const numero2 =
-        "5516988291300";
-
-    const url1 =
-        "https://wa.me/" +
-        numero1 +
-        "?text=" +
-        encodeURIComponent(
-            mensagem
-        );
-
-    const url2 =
-        "https://wa.me/" +
-        numero2 +
-        "?text=" +
-        encodeURIComponent(
-            mensagem
-        );
-
-    fecharModalWhatsApp();
-
-    // Abre o primeiro
-    window.location.href = url1;
+    fecharEscolhaWhatsApp();
 
     /*
-       Depois de enviar manualmente no WhatsApp,
-       você poderá voltar ao sistema e escolher
-       o segundo contato.
+        ABERTURA DIRETAMENTE
+        PELO CLIQUE DO USUÁRIO
     */
 
-    window.mensagemWhatsAppSegundo =
-        url2;
+    window.open(
+        url,
+        "_blank"
+    );
 
-    limparListaDepoisDoWhatsApp();
-
-}
-
-
-function limparListaDepoisDoWhatsApp(){
+    /*
+        ZERA A LISTA
+    */
 
     lista = [];
 
-    const observacao =
-        document.getElementById(
-            "observacaoGeral"
-        );
-
-    if(observacao){
-        observacao.value = "";
-    }
+    document.getElementById(
+        "observacaoGeral"
+    ).value = "";
 
     salvarDados();
 
     renderLista();
 
     mostrarToast(
-        "✅ Lista enviada e zerada!"
+        "✅ WhatsApp aberto e lista zerada!"
+    );
+
+}
+    function abrirWhatsAppPrimeiro(){
+
+    const mensagem =
+        window.mensagemWhatsApp;
+
+    if(!mensagem){
+        mostrarToast(
+            "Erro: mensagem não encontrada."
+        );
+        return;
+    }
+
+    const numero =
+        "5516993061879";
+
+    const url =
+        "https://wa.me/" +
+        numero +
+        "?text=" +
+        encodeURIComponent(
+            mensagem
+        );
+
+    fecharEscolhaWhatsApp();
+
+    /*
+        ABRE SOMENTE O PRIMEIRO
+    */
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+    /*
+        NÃO ZERA A LISTA!
+        Ela precisa continuar disponível
+        para o segundo envio.
+    */
+
+    mostrarToast(
+        "🦖 Envie para o primeiro contato e volte para enviar ao segundo."
     );
 
 }
