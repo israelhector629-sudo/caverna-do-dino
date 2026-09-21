@@ -3691,7 +3691,7 @@ const SENHA_EXCLUSAO = "1234";
        WHATSAPP
     ========================================================= */
 
-    function enviarWhatsApp(){
+   function enviarWhatsApp(){
 
     if(lista.length === 0){
 
@@ -3703,7 +3703,6 @@ const SENHA_EXCLUSAO = "1234";
 
     }
 
-
     let mensagem =
 `🦖 *CAVERNA DO DINO*
 🛒 *LISTA DE COMPRAS*
@@ -3714,7 +3713,6 @@ const SENHA_EXCLUSAO = "1234";
 📋 *PRODUTOS*
 ━━━━━━━━━━━━━━━━━━
 `;
-
 
     /*
         LISTA ÚNICA
@@ -3739,12 +3737,10 @@ const SENHA_EXCLUSAO = "1234";
         }
     );
 
-
     const observacaoGeral =
         document.getElementById(
             "observacaoGeral"
         ).value.trim();
-
 
     if(observacaoGeral){
 
@@ -3753,30 +3749,39 @@ const SENHA_EXCLUSAO = "1234";
 
     }
 
-
     mensagem +=
 `\n━━━━━━━━━━━━━━━━━━
 📋 Lista enviada pelo sistema Caverna do Dino.`;
 
+    // ==============================
+    // DOIS CONTATOS
+    // ==============================
 
-    const url =
+    const numero1 = "5516993061879";
+    const numero2 = "5516988291300";
+
+    const url1 =
         "https://wa.me/" +
-        numero +
+        numero1 +
         "?text=" +
-        encodeURIComponent(
-            mensagem
-        );
+        encodeURIComponent(mensagem);
 
+    const url2 =
+        "https://wa.me/" +
+        numero2 +
+        "?text=" +
+        encodeURIComponent(mensagem);
 
-    window.open(
-        url,
-        "_blank"
-    );
+    // Abre os dois WhatsApps
+    window.open(url1, "_blank");
 
+    setTimeout(() => {
+        window.open(url2, "_blank");
+    }, 500);
 
     /*
         ZERA A LISTA
-        depois de abrir o WhatsApp
+        depois de abrir os WhatsApps
     */
 
     lista = [];
@@ -3790,11 +3795,10 @@ const SENHA_EXCLUSAO = "1234";
     renderLista();
 
     mostrarToast(
-        "✅ Lista enviada e zerada!"
+        "✅ Lista enviada para os dois contatos e zerada!"
     );
 
 }
-
 
     /* =========================================================
        UTILIDADES
