@@ -3703,17 +3703,14 @@ function enviarWhatsApp(){
         return;
     }
 
-    let mensagem =
-`🦖 *CAVERNA DO DINO*
-🛒 *LISTA DE COMPRAS*
+   let mensagem =
+`*CAVERNA DO DINO* 🦖
+*LISTA DE COMPRAS* 🛒
 
-👤 Responsável pela lista: *${usuarioAtual}*
+👤 Responsável: *${usuarioAtual}*
 
-━━━━━━━━━━━━━━━━━━
-📋 *PRODUTOS*
 ━━━━━━━━━━━━━━━━━━
 `;
-
 
     /*
         SETORES DA LISTA
@@ -3769,23 +3766,21 @@ ${setor.icone} *${setor.nome}*
 `;
 
 
-        produtosSetor.forEach(item => {
+       produtosSetor.forEach(item => {
 
-            mensagem +=
-`\n• ${item.nome} — *${item.quantidade}x*`;
+    mensagem +=
+`• ${item.nome} — *${item.quantidade}x*`;
 
-            if(item.observacaoItem){
+    if(item.observacaoItem){
 
-                mensagem +=
-`\n  📝 ${item.observacaoItem}`;
+        mensagem +=
+` 📝 ${item.observacaoItem}`;
 
-            }
+    }
 
-            mensagem += "\n";
+    mensagem += "\n";
 
-        });
-
-    });
+});
 
 
     /*
