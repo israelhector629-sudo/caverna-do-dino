@@ -2255,33 +2255,7 @@ button:active {
         </div>
 
 
-        <div class="form-group">
-
-            <label>
-                Setor que solicitou
-            </label>
-
-            <select id="modalSetor" class="form-control">
-
-                <option value="Pizza">
-                    🍕 Pizza
-                </option>
-
-                <option value="Cozinha">
-                    🍳 Cozinha
-                </option>
-
-                <option value="Lanchonete">
-                    🍔 Lanchonete
-                </option>
-
-                <option value="Bar">
-                    🥤 Bar
-                </option>
-
-            </select>
-
-        </div>
+        
 
 
         <div class="form-group">
@@ -3236,9 +3210,7 @@ button:active {
         ).value = "";
 
 
-        document.getElementById(
-            "modalSetor"
-        ).value = "Pizza";
+        
 
 
         document.getElementById(
@@ -3305,11 +3277,7 @@ button:active {
         }
 
 
-        const setor =
-            document.getElementById(
-                "modalSetor"
-            ).value;
-
+        
 
         const quantidade =
             parseInt(
@@ -3330,28 +3298,24 @@ button:active {
             em setores diferentes.
         */
 
-        const existente =
-            lista.find(
-                item =>
+       const existente =
+    lista.find(
+        item =>
 
-                    (
-                        item.produtoId ===
-                            produtoSelecionado.id ||
+            (
+                item.produtoId ===
+                    produtoSelecionado.id ||
 
-                        (
-                            !item.produtoId &&
-                            item.nome ===
-                                produtoSelecionado.nome
-                        )
-                    ) &&
+                (
+                    !item.produtoId &&
+                    item.nome ===
+                        produtoSelecionado.nome
+                )
+            ) &&
 
-                    item.setor ===
-                        setor &&
-
-                    item.observacaoItem ===
-                        observacao
-            );
-
+            item.observacaoItem ===
+                observacao
+    );
 
         if(existente){
 
@@ -3382,8 +3346,7 @@ button:active {
                 emoji:
                     produtoSelecionado.emoji,
 
-                setor:
-                    setor,
+                
 
                 quantidade:
                     quantidade,
