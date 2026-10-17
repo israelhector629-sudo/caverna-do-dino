@@ -3740,108 +3740,81 @@ function enviarWhatsApp(){
     ];
 
 
-    /*
-        MONTA CADA SETOR
-    */
+  
+/*
+    MONTA CADA SETOR
+*/
 
-    setores.forEach(setor => {
+setores.forEach(setor => {
+    const produtosSetor = lista.filter(
+        item => item.categoria === setor.categoria
+    );
 
-        const produtosSetor =
-            lista.filter(
-                item =>
-                    item.categoria ===
-                    setor.categoria
-            );
+    if (produtosSetor.length === 0) {
+        return;
+    }
 
-
-        if(produtosSetor.length === 0){
-            return;
-        }
-
-
-       mensagem +=
-`\n${setor.icone} *${setor.nome}*
+    mensagem +=
+        `\n${setor.icone} *${setor.nome}*
 ━━━━━━━━━━━━━━━━━━
 `;
 
+    produtosSetor.forEach(item => {
+        mensagem +=
+            `• ${item.nome} — *${item.quantidade}x*`;
 
-       produtosSetor.forEach(item => {
+        if (item.observacaoItem) {
+            mensagem += ` 📝 ${item.observacaoItem}`;
+        }
 
+        mensagem += "\n";
+    });
+});
+
+/*
+    OBSERVAÇÃO GERAL
+*/
+
+const observacaoGeral = document
+    .getElementById("observacaoGeral")
+    .value.trim();
+
+if (observacaoGeral) {
     mensagem +=
-`• ${item.nome} — *${item.quantidade}x*`;
-
-    if(item.observacaoItem){
-
-        mensagem +=
-` 📝 ${item.observacaoItem}`;
-
-    }
-
-   
-
-    /*
-        OBSERVAÇÃO GERAL
-    */
-
-    const observacaoGeral =
-        document.getElementById(
-            "observacaoGeral"
-        ).value.trim();
-
-
-    if(observacaoGeral){
-
-        mensagem +=
-`\n📌 *OBSERVAÇÃO GERAL*
+        `\n📌 *OBSERVAÇÃO GERAL*
 ${observacaoGeral}
 `;
+}
 
-    }
-
-
-    mensagem +=
-`\n━━━━━━━━━━━━━━━━━━
+mensagem +=
+    `\n━━━━━━━━━━━━━━━━━━
 📋 Lista enviada pelo sistema Caverna do Dino.`;
 
+/*
+    WHATSAPP
+*/
 
-    /*
-        WHATSAPP
-    */
+const url =
+    "https://wa.me/" +
+    numero +
+    "?text=" +
+    encodeURIComponent(mensagem);
 
-    const url =
-        "https://wa.me/" +
-        numero +
-        "?text=" +
-        encodeURIComponent(
-            mensagem
-        );
+window.open(url, "_blank");
 
+/*
+    ZERA A LISTA
+*/
 
-    window.open(
-        url,
-        "_blank"
-    );
+lista = [];
 
+document.getElementById("observacaoGeral").value = "";
 
-    /*
-        ZERA A LISTA
-    */
+salvarDados();
+renderLista();
 
-    lista = [];
+mostrarToast("✅ Lista enviada e zerada!");
 
-    document.getElementById(
-        "observacaoGeral"
-    ).value = "";
-
-    salvarDados();
-
-    renderLista();
-
-    mostrarToast(
-        "✅ Lista enviada e zerada!"
-    );
-
-}
 
 
     
